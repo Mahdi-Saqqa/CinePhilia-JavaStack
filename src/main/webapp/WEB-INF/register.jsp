@@ -1,70 +1,70 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Lenovo
-  Date: 5/16/2023
-  Time: 4:32 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<!-- c:out ; c:forEach etc. -->
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<!-- Formatting (dates) -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
+<!-- form:form -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!-- for rendering errors on PUT routes -->
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Login and Registration</title>
-    <!-- Add Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <body>
 <div class="container">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-6 text-center mb-4">
-            <img src="path_to_logo_image" alt="CinePhilia Logo">
+            <img src="/img/logo.png" alt="CinePhilia Logo">
         </div>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="register-form">
                 <h2 class="text-center">Register</h2>
-                <form action="register" method="post">
+                <h1>Register!</h1>
+
+
+                <form:form method="POST" action="/register" modelAttribute="user">
                     <!-- Username input -->
-                    <div class="form-group">
-                        <label for="username">Username:</label>
-                        <input type="text" class="form-control" id="username" name="username" required>
-                    </div>
 
+                    <div class="form-group">
+                        <form:label path="username">Username:</form:label>
+                        <form:input path="username" type="text" class="form-control" />
+                    </div>
                     <!-- Email input -->
-                    <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
-                    </div>
 
+                    <div class="form-group">
+                        <form:label path="email">Email:</form:label>
+                        <form:input path="email" type="email" class="form-control" />
+                    </div>
                     <!-- Password input -->
                     <div class="form-group">
-                        <label for="password">Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <form:label path="password">Password:</form:label>
+                        <form:password path="password"  class="form-control" />
                     </div>
-
                     <!-- Confirm password input -->
                     <div class="form-group">
-                        <label for="confirmPassword">Confirm Password:</label>
-                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                        <form:label path="confirmPassword">PWConfirm:</form:label>
+                        <form:password path="confirmPassword"  class="form-control" />
                     </div>
-
                     <!-- Date of Birth input -->
                     <div class="form-group">
-                        <label for="dob">Date of Birth:</label>
-                        <input type="date" class="form-control" id="dob" name="dob" required>
+                        <form:label path="dob">Date Of Birth:</form:label>
+                        <form:input path="dob" type="date" class="form-control" />
                     </div>
 
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary btn-block">Register</button>
-                </form>
+                    <button type="submit" class="btn btn-primary btn-block" value="Register!">Register</button>
+                </form:form>
+                <form action="register" method="post">
             </div>
+            <p><form:errors path="user.*"/></p>
         </div>
-    </div>
 </div>
 <!-- Include Bootstrap JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

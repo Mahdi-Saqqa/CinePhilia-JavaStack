@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class UserController {
 
     @RequestMapping("/register")
-    public String registerForm(@Valid @ModelAttribute("user") User user) {
-        return "registration.jsp";
+    public String registerForm(@ModelAttribute("user") User user) {
+        return "register.jsp";
     }
 
     @RequestMapping("/login")

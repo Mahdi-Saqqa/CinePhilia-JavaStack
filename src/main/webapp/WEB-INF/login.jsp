@@ -5,17 +5,23 @@
   Time: 1:58 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+
+<!-- c:out ; c:forEach etc. -->
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<!-- Formatting (dates) -->
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
+<!-- form:form -->
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!-- for rendering errors on PUT routes -->
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Login and Registration</title>
-    <!-- Add Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Log In</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <style>
@@ -25,21 +31,20 @@
     }
 </style>
 </head>
-<body>
-<div class="container container-center">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="logo">
+<body class="bg-dark text-light">
+<div class="container-fluid row h-100 my-auto">
+        <div class="col-md-6 mx-auto my-auto">
+            <div class="logo d-flex flex-column justify-content-center align align-items-center ">
                 <!-- CinePhilia logo -->
-                <img src="path_to_logo_image" alt="CinePhilia Logo">
+                <img src="/img/Logo.png" alt="CinePhilia Logo mx-auto">
                 <!-- Slogan -->
-                <p>With CinePhilia, Every film becomes an immersive experience that speaks to your soul.</p>
+                <h3 class="h3 text-center w-50 mx-auto">With CinePhilia, Every film becomes an immersive experience that speaks to your soul.</h3>
             </div>
         </div>
         <div class="col-md-6">
             <div class="login-form">
                 <h2>Login</h2>
-                <form action="login" method="post">
+                <form action="login" method="post" class="w-75">
                     <!-- Email input -->
                     <div class="form-group">
                         <label for="email">Email:</label>
@@ -51,14 +56,13 @@
                         <label for="password">Password:</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                     </div>
-
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-primary">Login</button>
                 </form>
-                <p>Don't have an account? <a href="signup.jsp">Sign up</a></p>
+                <p>Don't have an account? <a href="/register">Sign up</a></p>
             </div>
         </div>
-    </div>
 </div>
 <!-- Include Bootstrap JS -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

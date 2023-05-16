@@ -1,8 +1,11 @@
 package com.ner3k.cinephilia.services;
-
 import com.ner3k.cinephilia.models.Role;
 import com.ner3k.cinephilia.models.User;
 import com.ner3k.cinephilia.repositories.UserRepository;
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -10,7 +13,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImplementation implements UserDetailsService {
-    private final UserRepository userRepository;
+    private UserRepository userRepository;
 
     public UserDetailsServiceImplementation(UserRepository userRepository){
         this.userRepository = userRepository;
@@ -24,12 +27,12 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
             throw new UsernameNotFoundException("User not found");
         }
 
-        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),getAuthorities(user));
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), getAuthorities(user));
     }
 
     // 2
-    private List<grantedauthority> getAuthorities(User user){
-        List<grantedauthority> authorities = new ArrayList<grantedauthority>();
+    private List<GrantedAuthority> getAuthorities(User user){
+        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
         for(Role role : user.getRoles()) {
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getName());
             authorities.add(grantedAuthority);

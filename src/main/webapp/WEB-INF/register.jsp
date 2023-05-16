@@ -61,9 +61,11 @@
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-primary btn-block" value="Register!">Register</button>
                 </form:form>
-                <form action="register" method="post">
             </div>
-            <p><form:errors path="user.*"/></p>
+            <div  class="d-grid">
+                <p class="alert alert-danger"><form:errors path="user.*"/></p>
+
+            </div>
         </div>
 </div>
 <!-- Include Bootstrap JS -->

@@ -47,8 +47,8 @@
                 <form action="login" method="post" class="w-75">
                     <!-- Email input -->
                     <div class="form-group">
-                        <label for="email">Email:</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <label for="username">User Name:</label>
+                        <input type="text" class="form-control" id="username" name="username" required>
                     </div>
 
                     <!-- Password input -->
@@ -58,9 +58,15 @@
                     </div>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     <!-- Submit button -->
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button type="submit" class="btn btn-primary"  value="Login!">Login</button>
                 </form>
                 <p>Don't have an account? <a href="/register">Sign up</a></p>
+                <c:if test="${logoutMessage != null}">
+                    <span class="alert alert-danger">${logoutMessage}</span>
+                </c:if>
+                <c:if test="${errorMessage != null}">
+                    <span class="alert alert-danger">${errorMessage}</span>
+                </c:if>
             </div>
         </div>
 </div>

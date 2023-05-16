@@ -6,7 +6,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.Period;
+import java.util.Scanner;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -47,9 +49,8 @@ public class User {
     @Size(min=8,max=128,message="Confirm password must be at least 8 and at most 128 characters")
     private String confirmPassword;
 
-
-    @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date dob;
+    @ValidAge(minimumAge = 12, message = "You must be at least 12 years old")
+    private LocalDate dob;
 
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -61,16 +62,16 @@ public class User {
 
     @Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date createdAt;
+    private LocalDate createdAt;
     @DateTimeFormat(pattern="yyyy-MM-dd")
-    private Date updatedAt;
+    private LocalDate updatedAt;
 
     @PrePersist
     protected void onCreate(){
-        this.createdAt = new Date();
+        this.createdAt = LocalDate.now();
     }
     @PreUpdate
     protected void onUpdate(){
-        this.updatedAt = new Date();
+        this.updatedAt = LocalDate.now();
     }
 }

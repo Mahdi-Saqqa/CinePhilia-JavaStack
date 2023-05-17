@@ -68,5 +68,8 @@ public class UserController {
         model.addAttribute("movie", movieService.addMovie(movieId));
         return "movie.jsp";
     }
-
+    @GetMapping("/movie")
+    public String view() {
+        return "details.jsp";
+    }
 }

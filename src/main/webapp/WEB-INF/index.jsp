@@ -70,6 +70,7 @@
             </div>
         </div>
     </div>
+
     <div class="col d-flex flex-column ">
         <div class="row me-5 h-50">
             <div class="kodfun-galeri">

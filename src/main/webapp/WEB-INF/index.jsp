@@ -71,7 +71,7 @@
         </div>
     </div>
     <div class="col d-flex flex-column h-100">
-        <main class="row h-75">
+        <main class="row h-50">
             <div class="kodfun-galeri">
                 <div style="background-image: url('/img/BohemianRhapsody.jpeg');"></div>
                 <div style="background-image: url('/img/house-of-gucci-lady-gaga.jpg');"></div>

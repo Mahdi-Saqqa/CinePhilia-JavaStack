@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Tacos</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/style.css"> <!-- change to match your file/naming structure -->
+    <link rel="stylesheet" href="/css/style.css"> <!-- change to match your file/naming structure -->
     <style>
         * {
             color:white;
@@ -71,13 +71,13 @@
         </div>
     </div>
     <div class="col d-flex flex-column h-100">
-        <main class="row">
+        <main class="row h-75">
             <div class="kodfun-galeri">
-                <div style="background-image: url('static/img/BohemianRhapsody.jpeg');"></div>
-                <div style="background-image: url('static/img/house-of-gucci-lady-gaga.jpg');"></div>
-                <div style="background-image: url('static/img/moonlight.jpg');"></div>
-                <div style="background-image: url('static/img/oculus.jpg');"></div>
-                <div style="background-image: url('static/img/riddle.jpg');"></div>
+                <div style="background-image: url('/img/BohemianRhapsody.jpeg');"></div>
+                <div style="background-image: url('/img/house-of-gucci-lady-gaga.jpg');"></div>
+                <div style="background-image: url('/img/moonlight.jpg');"></div>
+                <div style="background-image: url('/img/oculus.jpg');"></div>
+                <div style="background-image: url('/img/riddle.jpg');"></div>
             </div>
         </main>
 <%--        <footer class="row bg-light py-4 mt-auto">--%>
@@ -88,7 +88,7 @@
 </div>
 
 
-
+<link rel="stylesheet" href="/css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.11/dist/gsap.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/script.js"></script><!-- change to match your file/naming structure -->

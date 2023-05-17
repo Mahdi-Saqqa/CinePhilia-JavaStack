@@ -31,7 +31,7 @@
     }
 </style>
 </head>
-<body class="bg-dark text-light">
+<body class="bg-dark text-light ">
 <div class="container-fluid row h-100 my-auto">
     <div class="col-md-6 mx-auto my-auto">
         <div class="logo d-flex flex-column justify-content-center align align-items-center ">

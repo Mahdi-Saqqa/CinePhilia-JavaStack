@@ -68,5 +68,11 @@ public class UserController {
         model.addAttribute("movie", movieService.addMovie(movieId));
         return "movie.jsp";
     }
+    @GetMapping("/search")
+    public String searchMovie(Model model, HttpSession session){
+        model.addAttribute("movies",movieService.getAllMovies());
+
+        return "search.jsp";
+    }
 
 }

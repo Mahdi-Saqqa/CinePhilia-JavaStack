@@ -15,38 +15,20 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Tacos</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css"> <!-- change to match your file/naming structure -->
+    <link rel="stylesheet" href="/static/css/style.css"> <!-- change to match your file/naming structure -->
     <style>
         * {
             color:white;
-
-        .kodfun-galeri {
-            display: flex;
-            height: 20 rem;
-            gap: 1rem;
         }
-
-        .kodfun-galeri > div {
-            flex:1;
-            border-radius:1rem;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: auto 100%;
-            transition: all .8s cubic-bezier(.25, .4, .45, 1.4);
-        }
-        .kodfun-galeri > div:hover {
-            flex:5;
-        }
-
     </style>
 </head>
 <body class="bg-dark">
 <div class="container-fluid overflow-hidden">
-<div class="row vh-100 overflow-auto">
-    <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
+<div class="row overflow-auto">
+    <div class="col-12 col-sm-2 col-xl-2 px-sm-2 px-2 bg-dark d-flex sticky-top">
         <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
             <a href="/" class="d-flex align-items-center py-3 pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <span class="fs-5">C<span class="d-none d-sm-inline">inePhilia</span></span>
+<%--                <span class="fs-5">C<span class="d-none d-sm-inline">inePhilia</span></span>--%>
             </a>
             <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
                 <li class="nav-item">
@@ -88,19 +70,81 @@
             </div>
         </div>
     </div>
-    <div class="col d-flex flex-column h-100">
-        <main class="row h-75">
+    <div class="col d-flex flex-column ">
+        <div class="row me-5 h-50">
             <div class="kodfun-galeri">
-                <div style="background-image: url('/img/BohemianRhapsody.jpeg');"></div>
-                <div style="background-image: url('/img/house-of-gucci-lady-gaga.jpg');"></div>
-                <div style="background-image: url('/img/moonlight.jpg');"></div>
-                <div style="background-image: url('/img/oculus.jpg');"></div>
-                <div style="background-image: url('/img/riddle.jpg');"></div>
+                <div style="hight:30rem; background-image: url('/img/BohemianRhapsody.jpeg');"></div>
+                <div style="hight:30rem; background-image: url('/img/house-of-gucci-lady-gaga.jpg');"></div>
+                <div style="hight:30rem; background-image: url('/img/riddle.jpg');"></div>
+                <div style="hight:30rem; background-image: url('/img/theForest.jpg');"></div>
+                <div style="hight:30rem; background-image: url('/img/oculus.jpg');"></div>
+                <div style="hight:30rem; background-image: url('/img/moonlight.jpg');"></div>
             </div>
-        </main>
-<%--        <footer class="row bg-light py-4 mt-auto">--%>
-<%--            <div class="col"> </div>--%>
-<%--        </footer>--%>
+        </div>
+        <div class="d-flex flex-wrap mt-5 gap-5 me-5 ">
+            <div class="card ratio ratio-16x9" style="width: 18rem; ">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+            <div class="card ratio ratio-16x9" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+            <div class="card ratio ratio-16x9" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+            <div class="card ratio ratio-16x9" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+            <div class="card ratio ratio-16x9" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+            <div class="card ratio ratio-16x9" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+            <div class="card ratio ratio-16x9" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+            <div class="card ratio ratio-16x9" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+            <div class="card ratio ratio-16x9" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+            <div class="card ratio ratio-16x9" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+            <div class="card ratio ratio-16x9" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+            <div class="card ratio ratio-16x9" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                </div>
+            </div>
+        </div>
+
+        </div>
     </div>
 </div>
 </div>

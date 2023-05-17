@@ -2,13 +2,8 @@ package com.ner3k.cinephilia.models;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.Scanner;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -49,6 +44,7 @@ public class User {
     @Size(min=8,max=128,message="Confirm password must be at least 8 and at most 128 characters")
     private String confirmPassword;
 
+    @NotNull
     @ValidAge(minimumAge = 12, message = "You must be at least 12 years old")
     private LocalDate dob;
 

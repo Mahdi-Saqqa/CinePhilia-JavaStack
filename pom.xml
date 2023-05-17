@@ -74,6 +74,7 @@
 			<artifactId>bootstrap</artifactId>
 			<version>5.2.3</version>
 		</dependency>
+<!--		Dependency for json files-->
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
@@ -115,6 +116,14 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>21.0</version>
+		</dependency>
+		<!-- Thanks for using https://jar-download.com -->
+
 
 	</dependencies>
 

@@ -9,6 +9,6 @@
   <title>Welcome Page</title>
 </head>
 <body>
-<p><c:out value="${result.title}"></c:out></p>
+<p><c:out value="${result}"></c:out></p>
 </body>
 </html>

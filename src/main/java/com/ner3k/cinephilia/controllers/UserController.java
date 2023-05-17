@@ -3,14 +3,13 @@ package com.ner3k.cinephilia.controllers;
 
 
 import com.ner3k.cinephilia.models.User;
-import com.ner3k.cinephilia.services.ApiRequestService;
+import com.ner3k.cinephilia.services.MovieService;
 import com.ner3k.cinephilia.services.UserService;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import java.security.Principal;
 import org.apache.tomcat.util.json.JSONParser;
 import org.apache.tomcat.util.json.ParseException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +21,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private MovieService movieService;
 
     @RequestMapping("/register")
     public String registerForm(@ModelAttribute("user") User user) {
@@ -63,12 +64,9 @@ public class UserController {
     }
     @PostMapping("/admin/newmovie")
     public String addMovieAction(@RequestParam("movieId") String movieId , Model model, HttpSession session) throws ParseException, ParseException {
+        model.addAttribute("movieId", movieId);
+        model.addAttribute("movie",movieService.addMovie(movieId));
 
-        String result = ApiRequestService.getMovie(movieId);
-        JSONParser parser = new JSONParser(result);
-        Object json = (Object) parser.parse();
-        System.out.println(json);
-        model.addAttribute("result", json);
         return "movie.jsp";
     }
 

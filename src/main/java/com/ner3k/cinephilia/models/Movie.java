@@ -38,7 +38,7 @@ public class Movie {
 
     private String trailer;
 
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
 
     @ManyToMany(fetch = FetchType.LAZY)

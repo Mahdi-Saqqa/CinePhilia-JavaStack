@@ -3,7 +3,7 @@ import gsap from "gsap";
 
 // get other plugins:
 import ScrollTrigger from "gsap/ScrollTrigger";
-import Flip from "gsap/Flip";
+import Flip from "/gasp.js";
 import Draggable from "gsap/Draggable";
 
 // or all tools are exported from the "all" file (excluding members-only plugins):

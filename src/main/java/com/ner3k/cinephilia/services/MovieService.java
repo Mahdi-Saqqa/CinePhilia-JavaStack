@@ -1,14 +1,9 @@
 package com.ner3k.cinephilia.services;
 
 
-import com.google.common.base.Splitter;
 import com.ner3k.cinephilia.models.Movie;
 import com.ner3k.cinephilia.repositories.MovieRepository;
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.Map;
-import lombok.AllArgsConstructor;
-import org.apache.tomcat.util.json.JSONParser;
 import org.apache.tomcat.util.json.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +15,13 @@ public class MovieService {
     private MovieRepository movieRepository;
 
     public static HashMap getMovie(String id) throws ParseException {
-        final String uri = "https://api.themoviedb.org/3/movie/"+id+"?api_key=936ec287a61d8548efeb41653e17f492";
+        final String uri = "https://api.themoviedb.org/3/movie/" + id + "?api_key=936ec287a61d8548efeb41653e17f492";
 
         RestTemplate restTemplate = new RestTemplate();
-        HashMap<String,String> result = restTemplate.getForObject(uri, HashMap.class );
+        HashMap<String, String> result = restTemplate.getForObject(uri, HashMap.class);
         return result;
     }
+
     public Movie addMovie(String id) throws ParseException {
 
         HashMap result = getMovie(id);

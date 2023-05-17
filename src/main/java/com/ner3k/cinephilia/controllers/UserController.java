@@ -86,4 +86,8 @@ public class UserController {
         return "details.jsp";
     }
 
+    @GetMapping("/profile")
+    public String viewProfile(){
+        return "profile.jsp";
+    }
 }

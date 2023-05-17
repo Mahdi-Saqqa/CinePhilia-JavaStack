@@ -53,6 +53,7 @@ public class UserController {
         // 1
 //        String username = principal.getName();
 //        model.addAttribute("currentUser", userService.findByUsername(username));
+        model.addAttribute("movies",movieService.getAllMovies());
         return "index.jsp";
     }
 
@@ -78,7 +79,10 @@ public class UserController {
 
 
     @GetMapping("/movie")
-    public String view() {
+    public String view(Model model, HttpSession session){
+
+        model.addAttribute("movie",movieService.getMovie(2L));
+        System.out.println(model.getAttribute("movie"));
         return "details.jsp";
     }
 

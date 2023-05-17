@@ -38,4 +38,10 @@ public class MovieService {
 
         return movieRepository.findAll();
     }
+    public  Movie getMovie(Long id) {
+        if(movieRepository.findById(id).isPresent()){
+            return movieRepository.findById(id).get();
+        }
+        else return null;
+    }
 }

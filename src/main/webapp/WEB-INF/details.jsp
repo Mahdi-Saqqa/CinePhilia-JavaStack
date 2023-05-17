@@ -63,11 +63,11 @@
       <div class="row">
         <div class="col-md-6">
           <!-- Add movie poster or video here -->
-          <img src="/static/moonlight.jpg" alt="Movie Poster" class="img-fluid">
+          <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster}" alt="Movie Poster" class="img-fluid">
         </div>
         <div class="col-md-6">
-          <h1 class="display-4">Movie Title</h1>
-          <p class="lead">Movie description goes here.</p>
+          <h1 class="display-4">${movie.title}</h1>
+          <p class="lead">${movie.overview}</p>
           <div class="rating-stars">
             <i class="bi bi-star" data-rating="1"></i>
             <i class="bi bi-star" data-rating="2"></i>

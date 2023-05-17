@@ -4,6 +4,7 @@ package com.ner3k.cinephilia.services;
 import com.ner3k.cinephilia.models.Movie;
 import com.ner3k.cinephilia.repositories.MovieRepository;
 import java.util.HashMap;
+import java.util.List;
 import org.apache.tomcat.util.json.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,5 +33,9 @@ public class MovieService {
         movie.setPoster((String) result.get("poster_path"));
         movie.setLanguage((String) result.get("original_language"));
         return movieRepository.save(movie);
+    }
+    public List<Movie> getAllMovies() {
+
+        return movieRepository.findAll();
     }
 }

@@ -12,68 +12,83 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Tacos</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css"> <!-- change to match your file/naming structure -->
-
+    <link rel="stylesheet" href="/static/css/style.css"> <!-- change to match your file/naming structure -->
+    <style>
+        * {
+            color:white;
+        }
+    </style>
 </head>
-<body>
-<!--
-Sections animate in and out on scroll. Scroll up or down and the sections will wrap around after hitting the start or end. Uses GSAP for the animations.
--->
-
-<header>
-    <div>
+<body class="bg-dark">
+<div class="container-fluid overflow-hidden">
+<div class="row vh-100 overflow-auto">
+    <div class="col-12 col-sm-3 col-xl-2 px-sm-2 px-0 bg-dark d-flex sticky-top">
+        <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
+            <a href="/" class="d-flex align-items-center py-3 pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <span class="fs-5">B<span class="d-none d-sm-inline">rand</span></span>
+            </a>
+            <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
+                <li class="nav-item">
+                    <a href="#" class="nav-link px-sm-0 px-2 py-4">
+                        <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2 py-4">
+                        <i class="bi bi-search"></i><span class="ms-1 d-none d-sm-inline">Search</span> </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link px-sm-0 px-2 py-4">
+                        <i class="bi bi-shuffle"></i><span class="ms-1 d-none d-sm-inline">Discover</span></a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link px-sm-0 px-2 py-4">
+                        <i class="fs-5 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Wishlist</span></a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link px-sm-0 px-2 py-4">
+                        <i class="fs-5 bi-people"></i><span class="ms-1 d-none d-sm-inline">About us</span> </a>
+                </li>
+            </ul>
+            <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="hugenerd" width="28" height="28" class="rounded-circle">
+                    <span class="d-none d-sm-inline mx-1">Joe</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="#">New project...</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-</header>
- <div >
-     <section class="first">
-         <div class="outer">
-             <div class="inner">
-                 <div class="bg one">
-                     <h2 class="section-heading">Scroll down</h2>
-                 </div>
-             </div>
-         </div>
+    <div class="col d-flex flex-column h-100">
+        <main class="row">
+            <div class="kodfun-galeri">
+                <div style="background-image: url('static/img/BohemianRhapsody.jpeg');"></div>
+                <div style="background-image: url('static/img/house-of-gucci-lady-gaga.jpg');"></div>
+                <div style="background-image: url('static/img/moonlight.jpg');"></div>
+                <div style="background-image: url('static/img/oculus.jpg');"></div>
+                <div style="background-image: url('static/img/riddle.jpg');"></div>
+            </div>
+        </main>
+<%--        <footer class="row bg-light py-4 mt-auto">--%>
+<%--            <div class="col"> </div>--%>
+<%--        </footer>--%>
+    </div>
+</div>
+</div>
 
-     </section>
-     <section class="second">
-         <div class="outer">
-             <div class="inner">
-                 <div class="bg">
-                     <h2 class="section-heading">Animated with GSAP</h2>
-                 </div>
-             </div>
-         </div>
-     </section>
-     <section class="third">
-         <div class="outer">
-             <div class="inner">
-                 <div class="bg">
-                     <h2 class="section-heading">GreenSock</h2>
-                 </div>
-             </div>
-         </div>
-     </section>
-     <section class="fourth">
-         <div class="outer">
-             <div class="inner">
-                 <div class="bg">
-                     <h2 class="section-heading">Animation platform</h2>
-                 </div>
-             </div>
-         </div>
-     </section>
-     <section class="fifth">
-         <div class="outer">
-             <div class="inner">
-                 <div class="bg">
-                     <h2 class="section-heading">Keep scrolling</h2>
-                 </div>
-             </div>
-         </div>
-     </section>
- </div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.11/dist/gsap.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/script.js"></script><!-- change to match your file/naming structure -->

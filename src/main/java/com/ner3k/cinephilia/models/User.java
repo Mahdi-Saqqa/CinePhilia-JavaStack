@@ -14,16 +14,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
 
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
 
-    @Pattern(regexp = "^[a-zA-Z]+$",message = "User Name Contains invalid characters")
+    @Pattern(regexp = "^[a-zA-Z]+$", message = "User Name Contains invalid characters")
     @NotEmpty(message = "User Name is required!")
     @Size(message = "Size must be between 4 and 30 Characters!")
     private String username;
@@ -35,13 +35,13 @@ public class User {
 
 
     @NotEmpty(message = "Password must not be empty")
-    @Size(min=8,max=128,message="Password must be at least 8 and at most 128 characters")
+    @Size(min = 8, max = 128, message = "Password must be at least 8 and at most 128 characters")
     private String password;
 
 
     @Transient
     @NotEmpty(message = "Confirm password is required")
-    @Size(min=8,max=128,message="Confirm password must be at least 8 and at most 128 characters")
+    @Size(min = 8, max = 128, message = "Confirm password must be at least 8 and at most 128 characters")
     private String confirmPassword;
 
     @NotNull
@@ -56,18 +56,19 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 
-    @Column(updatable=false)
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate createdAt;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate updatedAt;
 
     @PrePersist
-    protected void onCreate(){
+    protected void onCreate() {
         this.createdAt = LocalDate.now();
     }
+
     @PreUpdate
-    protected void onUpdate(){
+    protected void onUpdate() {
         this.updatedAt = LocalDate.now();
     }
 }

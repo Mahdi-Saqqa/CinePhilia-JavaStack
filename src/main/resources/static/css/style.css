@@ -1,10 +1,12 @@
 .kodfun-galeri {
     display: flex;
-    height: 20 rem;
+    height: 50 vh;
     gap: 1rem;
 }
 
 .kodfun-galeri > div {
+    height: 50vh;
+    aspect-ratio: 0.25;
     flex:1;
     border-radius:1rem;
     background-position: center;
@@ -15,3 +17,4 @@
 .kodfun-galeri > div:hover {
     flex:5;
 }
+

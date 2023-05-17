@@ -66,7 +66,6 @@ public class UserController {
     public String addMovieAction(@RequestParam("movieId") String movieId , Model model, HttpSession session) throws ParseException, ParseException {
         model.addAttribute("movieId", movieId);
         model.addAttribute("movie",movieService.addMovie(movieId));
-
         return "movie.jsp";
     }
 

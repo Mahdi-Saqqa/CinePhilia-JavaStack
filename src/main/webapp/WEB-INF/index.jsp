@@ -15,11 +15,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Tacos</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/css/style.css"> <!-- change to match your file/naming structure -->
+    <link rel="stylesheet" href="/css/style.css"> <!-- change to match your file/naming structure -->
     <style>
         * {
             color:white;
         }
+        #box {
+            transition: 500ms;
+        }
+
     </style>
 </head>
 <body class="bg-dark">
@@ -28,7 +32,7 @@
     <div class="col-12 col-sm-2 col-xl-2 px-sm-2 px-2 bg-dark d-flex sticky-top">
         <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
             <a href="/" class="d-flex align-items-center py-3 pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
-<%--                <span class="fs-5">C<span class="d-none d-sm-inline">inePhilia</span></span>--%>
+                <span class="fs-5">C<span class="d-none d-sm-inline">inePhilia</span></span>
             </a>
             <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
                 <li class="nav-item">
@@ -72,7 +76,7 @@
     </div>
 
     <div class="col d-flex flex-column ">
-        <div class="row me-5 h-50">
+        <div class="row me-5 ">
             <div class="kodfun-galeri">
                 <div style="hight:30rem; background-image: url('/img/BohemianRhapsody.jpeg');"></div>
                 <div style="hight:30rem; background-image: url('/img/house-of-gucci-lady-gaga.jpg');"></div>
@@ -82,75 +86,20 @@
                 <div style="hight:30rem; background-image: url('/img/moonlight.jpg');"></div>
             </div>
         </div>
-        <div class="d-flex flex-wrap mt-5 gap-5 me-5 ">
-            <div class="card ratio ratio-16x9" style="width: 18rem; ">
-                <img src="..." class="card-img-top" alt="...">
+        <div class="d-flex flex-wrap gap-3 me-5 pt-5">
+            <c:forEach var="movie" items="${movies}">
+            <div  id="box" class="card flex-1 ratio ratio-16x9" style="width: 15rem; " >
+                <img src="https://www.themoviedb.org/t/p/w355_and_h200_bestv2${movie.poster}" alt="Movie Poster" class="card-img-top" ">
                 <div class="card-body">
                 </div>
             </div>
-            <div class="card ratio ratio-16x9" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                </div>
-            </div>
-            <div class="card ratio ratio-16x9" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                </div>
-            </div>
-            <div class="card ratio ratio-16x9" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                </div>
-            </div>
-            <div class="card ratio ratio-16x9" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                </div>
-            </div>
-            <div class="card ratio ratio-16x9" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                </div>
-            </div>
-            <div class="card ratio ratio-16x9" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                </div>
-            </div>
-            <div class="card ratio ratio-16x9" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                </div>
-            </div>
-            <div class="card ratio ratio-16x9" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                </div>
-            </div>
-            <div class="card ratio ratio-16x9" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                </div>
-            </div>
-            <div class="card ratio ratio-16x9" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                </div>
-            </div>
-            <div class="card ratio ratio-16x9" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                </div>
-            </div>
+            </c:forEach>
         </div>
 
         </div>
     </div>
 </div>
 </div>
-
-
 <link rel="stylesheet" href="/css/style.css">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.11/dist/gsap.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>

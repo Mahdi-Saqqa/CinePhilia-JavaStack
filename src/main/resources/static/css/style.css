@@ -1,11 +1,11 @@
 .kodfun-galeri {
+    margin-top: 10px;
     display: flex;
-    height: 50 vh;
     gap: 1rem;
 }
 
 .kodfun-galeri > div {
-    height: 50vh;
+    height: 60vh;
     aspect-ratio: 0.25;
     flex:1;
     border-radius:1rem;

@@ -57,9 +57,9 @@ public class UserController {
 
     @RequestMapping(value = {"/", "/home", "/main"})
     public String home(Principal principal, Model model) {
-        // 1
-//        String username = principal.getName();
-//        model.addAttribute("currentUser", userService.findByUsername(username));
+
+        String username = principal.getName();
+        model.addAttribute("currentUser", userService.findByUsername(username));
         model.addAttribute("movies",movieService.getAllMovies());
         return "index.jsp";
     }

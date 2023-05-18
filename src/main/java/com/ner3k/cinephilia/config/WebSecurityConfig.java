@@ -23,7 +23,9 @@ public class WebSecurityConfig {
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
-                .requestMatchers("/", "/home").authenticated()
+
+                .requestMatchers("/admin/newmovie").authenticated()
+                .requestMatchers("/", "/home").permitAll()
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

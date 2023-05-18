@@ -84,7 +84,7 @@
                     vibrant community and express your thoughts through reviews.
                     Users struggle to find diverse film recommendations and face challenges in accessing
                     reliable movie data. CinePhilia, aims to address these challenges by providing a
-                    centralized platform with a wide range of features.
+                    centralized platform with a wide range of features,
                     With CinePhilia, Every film becomes an immersive experience that speaks to your soul
                 </p>
 

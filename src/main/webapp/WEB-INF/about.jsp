@@ -77,6 +77,7 @@
 
         <div class="col d-flex flex-column align-self-center">
             <div class="d-flex justify-content-center align-content-center flex-column ">
+                <h1>About Us</h1>
                 <p>
                     Welcome to CinePhilia, the ultimate movie app. Explore captivating films, check
                     ratings, and share your own reviews. Immerse yourself in curated movies from various
@@ -85,6 +86,11 @@
                     Users struggle to find diverse film recommendations and face challenges in accessing
                     reliable movie data. CinePhilia, aims to address these challenges by providing a
                     centralized platform with a wide range of features,
+                    CinePhilia aims to revolutionize the way movie enthusiasts interact with films and
+                    engage with a community of like-minded individuals. By offering an immersive moviewatching experience, comprehensive information, and a platform for sharing reviews,
+                    CinePhilia strives to become the go-to app for all movie lovers.
+                </p>
+                <p>
                     With CinePhilia, Every film becomes an immersive experience that speaks to your soul
                 </p>
 

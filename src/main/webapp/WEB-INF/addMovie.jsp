@@ -23,7 +23,6 @@
         #box {
             transition: 500ms;
         }
-
     </style>
 </head>
 <body class="bg-dark">

@@ -20,7 +20,7 @@
 </head>
 <body class="bg-dark">
     <div class="col-3 m-auto">
-        <form class="form" action="login" method="post">
+        <form style="-webkit-box-shadow: 0px 0px 15px -3px rgba(255,255,255,1); -moz-box-shadow: 0px 0px 15px -3px rgba(255,255,255,1); box-shadow: 0px 0px 15px -3px rgba(255,255,255,1);" class="form" action="login" method="post">
             <p id="heading">Login</p>
             <div class="field">
                 <svg class="input-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">

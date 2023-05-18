@@ -72,15 +72,22 @@
           <img class="rounded" style="height: 600px; width: 400px;" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster}" alt="Movie Poster" class="img-fluid">
         </div>
         <div class="col-md-6 col-sm-12">
-          <h1 class="display-4">${movie.title}</h1>
-          <p class="lead">${movie.overview}</p>
+          <h1 class="display-4 my-5">${movie.title}</h1>
+          <p class="lead me-5 text-wrap">${movie.overview}</p>
           <div class="rating-stars">
-            <i class="bi bi-star" data-rating="1"></i>
-            <i class="bi bi-star" data-rating="2"></i>
-            <i class="bi bi-star" data-rating="3"></i>
-            <i class="bi bi-star" data-rating="4"></i>
-            <i class="bi bi-star" data-rating="5"></i>
+            <i class="bi bi-star display-6" data-rating="1"></i>
+            <i class="bi bi-star display-6" data-rating="2"></i>
+            <i class="bi bi-star display-6" data-rating="3"></i>
+            <i class="bi bi-star display-6" data-rating="4"></i>
+            <i class="bi bi-star display-6" data-rating="5"></i>
+            <c:if test="${movie.avgRates()==0}">
+              <span>Be the first to rate this movie</span>
+            </c:if>
+            <c:if test="${movie.avgRates() !=0}">
+              ${movie.avgRates()}
+            </c:if>
           </div>
+
           <button class="btn btn-primary" onclick="createReviewBox(this)">Add Review</button>
         </div>
       </div>
@@ -108,9 +115,11 @@
       const starRating = star.getAttribute('data-rating');
       if (starRating <= rating) {
         star.classList.add('bi-star-fill');
+        star.classList.add('text-warning');
         star.classList.remove('bi-star');
       } else {
         star.classList.add('bi-star');
+        star.classList.remove('text-warning');
         star.classList.remove('bi-star-fill');
       }
     });

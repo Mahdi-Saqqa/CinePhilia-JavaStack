@@ -8,6 +8,7 @@ import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.NaturalId;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
@@ -22,7 +23,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
+    @NaturalId
     @Pattern(regexp = "^[a-zA-Z]+$", message = "User Name Contains invalid characters")
     @NotEmpty(message = "User Name is required!")
     @Size(message = "Size must be between 4 and 30 Characters!")
@@ -64,6 +65,10 @@ public class User {
     private LocalDate createdAt;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate updatedAt;
+
+    @OneToMany( mappedBy = "user",fetch = FetchType.LAZY)
+    List<Rate> rates;
+
 
     @PrePersist
     protected void onCreate() {

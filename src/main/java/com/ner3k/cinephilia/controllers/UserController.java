@@ -59,7 +59,6 @@ public class UserController {
 
     @GetMapping("/admin/newmovie")
     public String addMovie() {
-
         return "addMovie.jsp";
     }
 
@@ -78,10 +77,10 @@ public class UserController {
     }
 
 
-    @GetMapping("/movie")
-    public String view(Model model, HttpSession session){
+    @GetMapping("/movie/{id}")
+    public String view(Model model, HttpSession session,@PathVariable("id")Long id){
 
-        model.addAttribute("movie",movieService.getMovie(3L));
+        model.addAttribute("movie",movieService.getMovie(id));
         System.out.println(model.getAttribute("movie"));
         return "details.jsp";
     }

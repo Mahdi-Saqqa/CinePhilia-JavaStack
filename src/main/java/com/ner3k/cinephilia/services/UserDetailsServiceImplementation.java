@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserDetailsServiceImplementation implements UserDetailsService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserDetailsServiceImplementation(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -34,7 +34,7 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
 
     // 2
     private List<GrantedAuthority> getAuthorities(User user) {
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        List<GrantedAuthority> authorities = new ArrayList<>();
         for (Role role : user.getRoles()) {
             GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getName());
             authorities.add(grantedAuthority);

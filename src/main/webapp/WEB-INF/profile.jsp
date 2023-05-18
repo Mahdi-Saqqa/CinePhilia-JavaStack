@@ -74,7 +74,7 @@
     <div class="col-sm-9 col-xl-10 py-3">
       <div class="row">
         <div class="col-md-6 col-sm-12">
-          <img src="/img/logo.jpeg" alt="Movie Poster" class="img-fluid">
+          <img src="/img/logo.jpeg" alt="Profile img" class="img-fluid">
         </div>
         <h1>User Name</h1>
 

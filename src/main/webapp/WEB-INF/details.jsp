@@ -23,6 +23,13 @@
     h1 {
       color:white;
     }
+    star {
+      cursor: pointer;
+      color: gray;
+    }
+    star highlight {
+      color: orange;
+    }
   </style>
 </head>
 <body class="bg-dark">
@@ -62,7 +69,7 @@
     <div class="col-sm-9 col-xl-10 py-3">
       <div class="row">
         <div class="col-md-6 col-sm-12">
-          <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster}" alt="Movie Poster" class="img-fluid">
+          <img class="rounded" style="height: 600px; width: 400px;" src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster}" alt="Movie Poster" class="img-fluid">
         </div>
         <div class="col-md-6 col-sm-12">
           <h1 class="display-4">${movie.title}</h1>
@@ -74,7 +81,7 @@
             <i class="bi bi-star" data-rating="4"></i>
             <i class="bi bi-star" data-rating="5"></i>
           </div>
-          <button class="btn btn-primary" onclick="createReviewBox()">Add Review</button>
+          <button class="btn btn-primary" onclick="createReviewBox(this)">Add Review</button>
         </div>
       </div>
       <div id="reviewBoxContainer"></div>
@@ -109,7 +116,8 @@
     });
   }
 
-  function createReviewBox() {
+  function createReviewBox(elem) {
+
     var reviewBoxContainer = document.getElementById("reviewBoxContainer");
 
     // Create the review box div
@@ -133,6 +141,7 @@
 
     // Append the review box div to the container
     reviewBoxContainer.appendChild(reviewBoxDiv);
+    elem.remove();
   }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.11/dist/gsap.min.js"></script>

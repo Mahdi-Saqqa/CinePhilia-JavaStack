@@ -76,9 +76,9 @@
         </div>
 
         <div class="col d-flex flex-column align-self-center">
-            <div class="d-flex justify-content-center align-content-center flex-column ">
-                <h1>About Us</h1>
-                <p>
+            <div class="d-flex justify-content-center align-content-center text-center flex-column w-75">
+                <h1 class="h1 my-5">About Us</h1>
+                <p style="text-align: justify;" class="lh-lg fs-6">
                     Welcome to CinePhilia, the ultimate movie app. Explore captivating films, check
                     ratings, and share your own reviews. Immerse yourself in curated movies from various
                     genres. Make informed decisions with comprehensive information and ratings. Join a
@@ -93,9 +93,6 @@
                 <p>
                     With CinePhilia, Every film becomes an immersive experience that speaks to your soul
                 </p>
-
-
-
             </div>
         </div>
     </div>

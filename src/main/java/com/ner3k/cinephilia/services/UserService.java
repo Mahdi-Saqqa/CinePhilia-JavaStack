@@ -1,5 +1,6 @@
 package com.ner3k.cinephilia.services;
 
+import com.ner3k.cinephilia.models.Movie;
 import com.ner3k.cinephilia.models.Role;
 import com.ner3k.cinephilia.models.User;
 import com.ner3k.cinephilia.repositories.RoleRepository;
@@ -37,4 +38,13 @@ public class UserService {
     public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
+
+    public User findByEmail(String email) {
+        if(userRepository.findUserByEmail(email).isPresent()){
+            return userRepository.findUserByEmail(email).get();
+        }
+        else return null;
+    }
+
+
 }

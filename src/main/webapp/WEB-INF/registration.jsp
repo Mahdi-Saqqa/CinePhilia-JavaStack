@@ -18,7 +18,7 @@
     <title>Login</title>
 </head>
 <body class="bg-dark">
-<div class="col-3 m-auto">
+<div class="col-3 col-sm-8 col-md-6 m-auto col-lg-3">
     <form:form class="form" action="/register" method="POST"  modelAttribute="user">
         <p id="heading">Register</p>
         <div class="field">
@@ -54,16 +54,16 @@
         <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="button3 mt-3" type="submit" value="Register!">Register</button>
         </div>
-
-    </form:form>
-    <div class="pt-5 mt-3">
         <div  class="d-grid">
             <form:errors path="username" class="alert alert-light"/>
             <form:errors path="email" class="alert alert-light"/>
             <form:errors path="password" class="alert alert-light"/>
             <form:errors path="confirmPassword" class="alert alert-light"/>
+            <form:errors path="dob" class="alert alert-light"/>
         </div>
-    </div>
+    </form:form>
+
+
 </div>
 </body>
 </html>

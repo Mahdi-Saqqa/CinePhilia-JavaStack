@@ -90,4 +90,9 @@ public class UserController {
     public String viewProfile(){
         return "profile.jsp";
     }
+    @GetMapping("/aboutus")
+    public String viewAbout(){
+        return "about.jsp";
+    }
+
 }

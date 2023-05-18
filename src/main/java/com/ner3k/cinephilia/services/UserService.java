@@ -1,5 +1,6 @@
 package com.ner3k.cinephilia.services;
 
+import com.ner3k.cinephilia.models.Role;
 import com.ner3k.cinephilia.models.User;
 import com.ner3k.cinephilia.repositories.RoleRepository;
 import com.ner3k.cinephilia.repositories.UserRepository;
@@ -28,6 +29,7 @@ public class UserService {
     public void saveUserWithAdminRole(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRoles(roleRepository.findByName("ROLE_ADMIN"));
+
         userRepository.save(user);
     }
 

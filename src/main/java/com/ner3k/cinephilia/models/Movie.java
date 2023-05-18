@@ -49,4 +49,7 @@ public class Movie {
     )
     private List<Genre> genres = new ArrayList<>();
 
+    @OneToMany(mappedBy="movie", fetch=FetchType.LAZY)
+    private List<Review> reviews;
+
 }

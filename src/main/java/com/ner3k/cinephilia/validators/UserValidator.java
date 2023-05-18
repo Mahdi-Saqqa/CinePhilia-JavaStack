@@ -28,8 +28,10 @@ public class UserValidator implements Validator {
             errors.rejectValue("passwordConfirmation", "Match");
         }
         if(userRepository.existsByEmail(user.getEmail())){
-            errors.rejectValue("email", "Exit");
-
+            errors.rejectValue("email", "Match");
+        }
+        if(userRepository.existsByUsername(user.getUsername())){
+            errors.rejectValue("username", "Match");
         }
 
     }

@@ -4,6 +4,7 @@ package com.ner3k.cinephilia.controllers;
 import com.ner3k.cinephilia.models.User;
 import com.ner3k.cinephilia.services.MovieService;
 import com.ner3k.cinephilia.services.UserService;
+import com.ner3k.cinephilia.validators.UserValidator;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import java.security.Principal;
@@ -17,6 +18,10 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class UserController {
 
+
+    @Autowired
+    private UserValidator userValidator;
+
     @Autowired
     private UserService userService;
     @Autowired
@@ -29,6 +34,7 @@ public class UserController {
 
     @RequestMapping("/login")
     public String login(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout, Model model) {
+
         if (error != null) {
             model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
         }
@@ -41,6 +47,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
+        userValidator.validate(user, result);
         if (result.hasErrors()) {
             return "registration.jsp";
         }

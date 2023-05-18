@@ -62,12 +62,14 @@
                 <button type="submit" class="btn btn-primary" value="Login!">Login</button>
             </form>
             <p>Don't have an account? <a href="/register">Sign up</a></p>
-            <c:if test="${logoutMessage != null}">
-                <span class="alert alert-danger">${logoutMessage}</span>
-            </c:if>
-            <c:if test="${errorMessage != null}">
-                <span class="alert alert-danger">${errorMessage}</span>
-            </c:if>
+
+                <c:if test="${logoutMessage != null}">
+                    <span class="alert alert-danger">${logoutMessage}</span>
+                </c:if>
+                <c:if test="${errorMessage != null}">
+                    <span class="alert alert-danger">${errorMessage}</span>
+                </c:if>
+
         </div>
     </div>
 </div>

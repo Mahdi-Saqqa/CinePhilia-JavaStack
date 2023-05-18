@@ -78,6 +78,7 @@
 
 .button2 {
     padding: 0.5em;
+    text-decoration: none;
     padding-left: 2.3em;
     padding-right: 2.3em;
     border-radius: 5px;
@@ -91,6 +92,7 @@
 .button2:hover {
     background-color: black;
     color: white;
+    text-decoration: none;
 }
 
 .button3 {

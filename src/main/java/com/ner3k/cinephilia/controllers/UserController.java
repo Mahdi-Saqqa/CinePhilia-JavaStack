@@ -24,7 +24,7 @@ public class UserController {
 
     @RequestMapping("/register")
     public String registerForm(@ModelAttribute("user") User user) {
-        return "register.jsp";
+        return "registration.jsp";
     }
 
     @RequestMapping("/login")
@@ -42,7 +42,7 @@ public class UserController {
     @PostMapping("/register")
     public String registration(@Valid @ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) {
         if (result.hasErrors()) {
-            return "register.jsp";
+            return "registration.jsp";
         }
         userService.saveWithUserRole(user);
         return "redirect:/login";

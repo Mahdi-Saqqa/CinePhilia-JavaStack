@@ -35,7 +35,7 @@ public class UserController {
         if (logout != null) {
             model.addAttribute("logoutMessage", "Logout Successful!");
         }
-        return "login.jsp";
+        return "signin.jsp";
     }
 
 

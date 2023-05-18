@@ -81,7 +81,7 @@ public class UserController {
     @GetMapping("/movie")
     public String view(Model model, HttpSession session){
 
-        model.addAttribute("movie",movieService.getMovie(2L));
+        model.addAttribute("movie",movieService.getMovie(3L));
         System.out.println(model.getAttribute("movie"));
         return "details.jsp";
     }

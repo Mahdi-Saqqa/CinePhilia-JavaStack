@@ -56,6 +56,9 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 
+    @OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+    private List<Review> reviews;
+
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate createdAt;

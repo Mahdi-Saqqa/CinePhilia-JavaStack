@@ -1,12 +1,14 @@
 package com.ner3k.cinephilia.controllers;
 
 
+import com.ner3k.cinephilia.models.Movie;
 import com.ner3k.cinephilia.models.User;
 import com.ner3k.cinephilia.services.MovieService;
 import com.ner3k.cinephilia.services.UserService;
 import com.ner3k.cinephilia.validators.UserValidator;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import java.io.IOException;
 import java.security.Principal;
 import org.apache.tomcat.util.json.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,8 +60,8 @@ public class UserController {
     @RequestMapping(value = {"/", "/home", "/main"})
     public String home(Principal principal, Model model) {
 
-        String username = principal.getName();
-        model.addAttribute("currentUser", userService.findByUsername(username));
+//        String username = principal.getName();
+//        model.addAttribute("currentUser", userService.findByUsername(username));
         model.addAttribute("movies",movieService.getAllMovies());
         return "index.jsp";
     }
@@ -70,10 +72,10 @@ public class UserController {
     }
 
     @PostMapping("/admin/newmovie")
-    public String addMovieAction(@RequestParam("movieId") String movieId, Model model, HttpSession session) throws ParseException, ParseException {
-        model.addAttribute("movieId", movieId);
-        model.addAttribute("movie", movieService.addMovie(movieId));
-        return "movie.jsp";
+    public String addMovieAction(@RequestParam("movieId") String movieId, Model model, HttpSession session) throws ParseException, ParseException, IOException {
+        Movie movie=  movieService.addMovie(movieId);
+
+        return "redirect:/movie/"+movie.getId();
     }
 
     @GetMapping("/search")
@@ -88,8 +90,7 @@ public class UserController {
     public String view(Model model, HttpSession session,@PathVariable("id")Long id){
 
         model.addAttribute("movie",movieService.getMovie(id));
-        System.out.println(model.getAttribute("movie"));
-        return "details.jsp";
+        return "movie.jsp";
     }
 
     @GetMapping("/profile")

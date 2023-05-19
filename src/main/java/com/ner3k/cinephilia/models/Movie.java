@@ -20,7 +20,7 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long tmdbId;
+    private String tmdbId;
 
     private String title;
 

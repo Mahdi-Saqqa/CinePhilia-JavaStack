@@ -15,22 +15,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>Tacos</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css"> <!-- change to match your file/naming structure -->
-    <style>
-        * {
-            color:white;
-        }
-        h1 {
-            color:white;
-        }
-        star {
-            cursor: pointer;
-            color: gray;
-        }
-        star highlight {
-            color: orange;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/movie.css">
+
 </head>
 <body class="bg-dark">
 <div class="container-fluid overflow-hidden">
@@ -83,16 +69,16 @@
                         </c:forEach>
                     </p>
                     <div class="rating-stars">
-                        <i class="bi bi-star display-6" data-rating="1"></i>
-                        <i class="bi bi-star display-6" data-rating="2"></i>
-                        <i class="bi bi-star display-6" data-rating="3"></i>
-                        <i class="bi bi-star display-6" data-rating="4"></i>
-                        <i class="bi bi-star display-6" data-rating="5"></i>
+                        <i class="bi bi-star fs-3" data-rating="1"></i>
+                        <i class="bi bi-star fs-3" data-rating="2"></i>
+                        <i class="bi bi-star fs-3" data-rating="3"></i>
+                        <i class="bi bi-star fs-3" data-rating="4"></i>
+                        <i class="bi bi-star fs-3" data-rating="5"></i>
                         <c:if test="${movie.avgRates()==0}">
-                            <span>Be the first to rate this movie</span>
+                            <span class="fs-6">Be the first to rate this movie</span>
                         </c:if>
                         <c:if test="${movie.avgRates() !=0}">
-                            ${movie.avgRates()}
+                            <span class="fs-3 ms-2">${movie.avgRates()}</span>
                         </c:if>
                     </div>
 
@@ -108,61 +94,8 @@
 </div>
 </div>
 
-<script>
-    const stars = document.querySelectorAll('.rating-stars i');
-
-    stars.forEach(star => {
-        star.addEventListener('click', () => {
-            const rating = star.getAttribute('data-rating');
-            setRating(rating);
-        });
-    });
-
-    function setRating(rating) {
-        stars.forEach(star => {
-            const starRating = star.getAttribute('data-rating');
-            if (starRating <= rating) {
-                star.classList.add('bi-star-fill');
-                star.classList.add('text-warning');
-                star.classList.remove('bi-star');
-            } else {
-                star.classList.add('bi-star');
-                star.classList.remove('text-warning');
-                star.classList.remove('bi-star-fill');
-            }
-        });
-    }
-
-    function createReviewBox(elem) {
-
-        var reviewBoxContainer = document.getElementById("reviewBoxContainer");
-
-        // Create the review box div
-        var reviewBoxDiv = document.createElement("div");
-        reviewBoxDiv.classList.add("review-box");
-
-        // Create the review input field
-        var reviewInput = document.createElement("textarea");
-        reviewInput.classList.add("form-control");
-        reviewInput.setAttribute("rows", "4");
-        reviewInput.setAttribute("placeholder", "Write your review...");
-
-        // Create the submit button
-        var submitButton = document.createElement("button");
-        submitButton.classList.add("btn", "btn-primary");
-        submitButton.textContent = "Submit Review";
-
-        // Append the input field and submit button to the review box div
-        reviewBoxDiv.appendChild(reviewInput);
-        reviewBoxDiv.appendChild(submitButton);
-
-        // Append the review box div to the container
-        reviewBoxContainer.appendChild(reviewBoxDiv);
-        elem.remove();
-    }
-</script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.11/dist/gsap.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/script.js"></script><!-- change to match your file/naming structure -->
+<script type="text/javascript" src="/js/star.js"></script><!-- change to match your file/naming structure -->
 </body>
 </html>

@@ -1,0 +1,13 @@
+* {
+    color:white;
+}
+h1 {
+    color:white;
+}
+star {
+    cursor: pointer;
+    color: gray;
+}
+star highlight {
+    color: orange;
+}

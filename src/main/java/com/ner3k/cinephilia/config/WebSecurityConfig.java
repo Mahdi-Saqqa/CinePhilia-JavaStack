@@ -21,11 +21,13 @@ public class WebSecurityConfig {
 
     @Bean
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         http
                 .authorizeHttpRequests()
-
-                .requestMatchers("/admin/newmovie").authenticated()
+                .requestMatchers("/profile").authenticated()
+                .requestMatchers("/admin/newmovie").hasRole("ADMIN")
                 .requestMatchers("/", "/home").permitAll()
+
                 .anyRequest().permitAll()
                 .and()
                 .formLogin()

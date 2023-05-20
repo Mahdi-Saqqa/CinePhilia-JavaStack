@@ -150,7 +150,7 @@
                             </form>
 
                             <button class="btn btn-primary" onclick="createReviewBox(this)">Add Review</button>
-                            <div id="reviewBoxContainer"></div>
+                            <form action="/movie/${movie.id}/addreview" method="post" id="reviewBoxContainer"></form>
                             <div>
                                 <c:forEach var="review" items="${movie.reviews}">
 

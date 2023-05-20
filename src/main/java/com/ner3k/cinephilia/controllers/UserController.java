@@ -246,4 +246,13 @@ public class UserController {
         model.addAttribute("movies", movieService.getRandomMovies());
         return "genre.jsp";
     }
-}
+    @PostMapping("/movie/{id}/addreview")
+    public  String addReview(Principal principal, @PathVariable("id") Long id, @RequestParam(value = "review")String review) throws ParseException{
+
+            String username = principal.getName();
+            User currentUser = userService.findByUsername(username);
+         Movie movie = movieService.getMovie(id);
+       movieService.addReviewToMovie(movie,currentUser,review);
+       return "redirect:/movie"+id;
+        }
+    }

@@ -39,8 +39,12 @@ public class MovieService {
 
         return genreRepository.getById(id);
     }
-
-
+    public void deleteReview(Long id) throws ParseException {
+        reviewRepository.deleteById(id);
+    }
+    public Review getReviewByID(Long id) throws ParseException {
+        return reviewRepository.getById(id);
+    }
     public String getMovieCertificate(String id) {
         final String uri = "https://api.themoviedb.org/3/movie/" + id + "/videos?api_key=936ec287a61d8548efeb41653e17f492";
 
@@ -166,4 +170,6 @@ public class MovieService {
         }
         return randMovies;
     }
+
+
 }

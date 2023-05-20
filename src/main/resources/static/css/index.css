@@ -39,7 +39,7 @@
     transition: all .8s cubic-bezier(.25, .4, .45, 1.4);
 }
 .kodfun-galeri > div:hover {
-    flex:5;
+    flex:2;
 }
 #user-list{
     z-index: 9999;

@@ -34,14 +34,14 @@ function createReviewBox(elem) {
 
     // Create the review input field
     var reviewInput = document.createElement("textarea");
-    reviewInput.classList.add("form-control");
+    reviewInput.classList.add("form-control","col-md-4");
     reviewInput.setAttribute("rows", "4");
     reviewInput.setAttribute("placeholder", "Write your review...");
     reviewInput.setAttribute("name", "review");
 
     // Create the submit button
     var submitButton = document.createElement("button");
-    submitButton.classList.add("btn", "btn-primary");
+    submitButton.classList.add("btn", "btn-primary" ,"my-3");
     submitButton.textContent = "Submit Review";
 
     // Append the input field and submit button to the review box div

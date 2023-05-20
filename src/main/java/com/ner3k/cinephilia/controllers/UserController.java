@@ -1,9 +1,7 @@
 package com.ner3k.cinephilia.controllers;
 
 
-import com.ner3k.cinephilia.models.Movie;
-import com.ner3k.cinephilia.models.Rate;
-import com.ner3k.cinephilia.models.User;
+import com.ner3k.cinephilia.models.*;
 import com.ner3k.cinephilia.services.MovieService;
 import com.ner3k.cinephilia.services.UserService;
 import com.ner3k.cinephilia.validators.UserValidator;
@@ -11,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.Objects;
 import java.util.Random;
 import org.eclipse.tags.shaded.org.apache.xpath.operations.Mod;
 import org.slf4j.Logger;
@@ -254,5 +253,26 @@ public class UserController {
          Movie movie = movieService.getMovie(id);
        movieService.addReviewToMovie(movie,currentUser,review);
        return "redirect:/movie/"+id;
+        }
+        @GetMapping("/deletereview/{reviewId}")
+    public String deleteReview(@PathVariable("reviewId") Long reviewId, Model model,Principal principal) throws ParseException {
+            Review review = movieService.getReviewByID(reviewId);
+            String username = principal.getName();
+            User currentUser = userService.findByUsername(username);
+            System.out.println("review method");
+            if (Objects.equals(currentUser.getId(), review.getUser().getId())) {
+                System.out.println("review user");
+                movieService.deleteReview(review.getId());
+            }
+            else  {
+                for(Role role : currentUser.getRoles()) {
+                    if(role.getName().equals("ROLE_ADMIN")) {
+                        System.out.println("admin");
+                        movieService.deleteReview(review.getId());
+                    }
+                }
+            }
+
+            return "redirect:/movie/"+review.getMovie().getId();
         }
     }

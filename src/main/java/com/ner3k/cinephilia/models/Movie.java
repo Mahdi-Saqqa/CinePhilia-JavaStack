@@ -41,6 +41,21 @@ public class Movie {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate releaseDate;
 
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate createdAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate updatedAt;
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDate.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.updatedAt = LocalDate.now();
+    }
+    
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "movies_genres",

@@ -68,19 +68,20 @@
                             <a href="/genre/${genre.id}">${genre.name}</a>
                         </c:forEach>
                     </p>
-                    <div class="rating-stars">
-                        <i class="bi bi-star fs-3" data-rating="1"></i>
-                        <i class="bi bi-star fs-3" data-rating="2"></i>
-                        <i class="bi bi-star fs-3" data-rating="3"></i>
-                        <i class="bi bi-star fs-3" data-rating="4"></i>
-                        <i class="bi bi-star fs-3" data-rating="5"></i>
-                        <c:if test="${movie.avgRates()==0}">
-                            <span class="fs-6">Be the first to rate this movie</span>
-                        </c:if>
-                        <c:if test="${movie.avgRates() !=0}">
-                            <span class="fs-3 ms-2">${movie.avgRates()}</span>
-                        </c:if>
-                    </div>
+                    <c:if test="${movie.avgRates()==0}">
+                        <span class="fs-6">Be the first to rate this movie</span>
+                    </c:if>
+                    <c:if test="${movie.avgRates() !=0}">
+                                <span>your Rate: ${loggedUserRate}</span>
+                                <span>Avg Rate :${movie.avgRates()}</span>
+                    </c:if>
+                    <form class="rating-stars">
+                        <a class="bi bi-star fs-3" data-rating="1" href="/rateMovie/${movie.id}/1"></a>
+                        <a class="bi bi-star fs-3" data-rating="2" href="/rateMovie/${movie.id}/2"></a>
+                        <a class="bi bi-star fs-3" data-rating="3" href="/rateMovie/${movie.id}/3"></a>
+                        <a class="bi bi-star fs-3" data-rating="4" href="/rateMovie/${movie.id}/4"></a>
+                        <a class="bi bi-star fs-3" data-rating="5" href="/rateMovie/${movie.id}/5"></a>
+                    </form>
 
                     <button class="btn btn-primary" onclick="createReviewBox(this)">Add Review</button>
                 </div>
@@ -90,10 +91,16 @@
 
     </div>
 </div>
-</div>
-</div>
-</div>
+<script src="https://code.jquery.com/jquery-3.7.0.js" ></script>
 
+<script type="text/javascript" >
+
+    $(document).ready( function () {
+        const rates=parseInt(${movie.avgRates()});
+
+        setRating(rates)
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.11/dist/gsap.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/js/star.js"></script><!-- change to match your file/naming structure -->

@@ -1,4 +1,5 @@
-const stars = document.querySelectorAll('.rating-stars i');
+const stars = document.querySelectorAll('.rating-stars a');
+
 
 stars.forEach(star => {
     star.addEventListener('click', () => {
@@ -8,6 +9,7 @@ stars.forEach(star => {
 });
 
 function setRating(rating) {
+    rating= parseInt(rating);
     stars.forEach(star => {
         const starRating = star.getAttribute('data-rating');
         if (starRating <= rating) {

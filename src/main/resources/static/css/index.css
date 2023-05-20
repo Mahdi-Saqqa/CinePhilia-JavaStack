@@ -1,9 +1,6 @@
-* {
-    color:white;
-}
+
 .canvas{
     min-height:60vh;
-    z-index:-1;
 }
 @media (min-width: 560px) {
     .h-sm-100 {
@@ -13,6 +10,7 @@
 .movie-card{
     aspect-ratio: 16/9;
     text-decoration: none;
+    color: white;
 }
 .movie-card:hover {
     -webkit-filter: brightness(70%);
@@ -27,13 +25,10 @@
     margin-top: 10px;
     display: flex;
     gap: 1rem;
-    z-index:-1;
 
 }
 
 .kodfun-galeri > div {
-    z-index:-1;
-
     height: 60vh;
     aspect-ratio: 0.25;
     flex:1;

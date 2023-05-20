@@ -5,8 +5,6 @@ function cardHoverIn(element) {
 }
 function cardHoverOut(element) {
     let title = element.querySelector("#title");
-    let subtext = element.querySelector("#subtext");
     element.style.transform = "scale(" + 1 + ")";
-
     title.classList.add("invisible");
 }

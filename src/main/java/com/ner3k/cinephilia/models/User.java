@@ -4,6 +4,7 @@ package com.ner3k.cinephilia.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -68,6 +69,16 @@ public class User {
 
     @OneToMany( mappedBy = "user",fetch = FetchType.LAZY)
     List<Rate> rates;
+
+    boolean dark = false;
+    public List<Long> getRatedMoviesId(){
+        List<Rate> rates = getRates();
+        List<Long> movieIds = new ArrayList<>();
+        for(Rate rate : rates){
+            movieIds.add(rate.getMovie().getId());
+        }
+        return movieIds;
+    }
 
 
     @PrePersist

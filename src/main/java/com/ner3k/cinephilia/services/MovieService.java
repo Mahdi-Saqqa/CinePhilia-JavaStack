@@ -3,12 +3,16 @@ package com.ner3k.cinephilia.services;
 
 import com.ner3k.cinephilia.models.Genre;
 import com.ner3k.cinephilia.models.Movie;
+import com.ner3k.cinephilia.models.Rate;
+import com.ner3k.cinephilia.models.User;
 import com.ner3k.cinephilia.repositories.GenreRepository;
 import com.ner3k.cinephilia.repositories.MovieRepository;
+import com.ner3k.cinephilia.repositories.RateRepository;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -23,6 +27,18 @@ public class MovieService {
     private MovieRepository movieRepository;
     @Autowired
     private GenreRepository genreRepository;
+    @Autowired
+    private RateRepository rateRepository;
+
+
+    public List<Movie> getMoviesByGenre(Long id) throws ParseException {
+        Genre genre = genreRepository.getById(id);
+        return genre.getMovies();
+    }
+    public Genre getGenreByID(Long id) throws ParseException {
+
+        return genreRepository.getById(id);
+    }
 
 
     public String getMovieCertificate(String id) {
@@ -119,4 +135,27 @@ public class MovieService {
     }
 
 
+    public void rateMovie(Movie movie, int rate,User user) {
+        Rate userrate = new Rate();
+        userrate.setRate(rate);
+        userrate.setMovie(movie);
+        userrate.setUser(user);
+        rateRepository.save(userrate);
+    }
+    public void updateMovieRate(Rate userrate){
+        rateRepository.save(userrate);
+    }
+
+    public List<Movie> getRandomMovies() {
+        List<Movie> randMovies = new ArrayList<Movie>();
+
+        for(int i = 0; i <10;i++){
+            List<Movie> movies = movieRepository.findAll();
+            Random random = new Random();
+            int randomIndex = random.nextInt(movies.size());
+            Movie movie = movies.get(randomIndex);
+            randMovies.add(movie);
+        }
+        return randMovies;
+    }
 }

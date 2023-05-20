@@ -37,6 +37,7 @@ function createReviewBox(elem) {
     reviewInput.classList.add("form-control");
     reviewInput.setAttribute("rows", "4");
     reviewInput.setAttribute("placeholder", "Write your review...");
+    reviewInput.setAttribute("name", "review");
 
     // Create the submit button
     var submitButton = document.createElement("button");

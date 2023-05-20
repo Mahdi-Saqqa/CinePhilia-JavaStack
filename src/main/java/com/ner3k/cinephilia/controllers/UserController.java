@@ -253,6 +253,6 @@ public class UserController {
             User currentUser = userService.findByUsername(username);
          Movie movie = movieService.getMovie(id);
        movieService.addReviewToMovie(movie,currentUser,review);
-       return "redirect:/movie"+id;
+       return "redirect:/movie/"+id;
         }
     }

@@ -29,7 +29,6 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/profile").authenticated()
                 .requestMatchers("*/admin/**").hasRole("ADMIN")
-                .requestMatchers("/", "/home","/login/facebook").permitAll()
                 .anyRequest().permitAll()
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler())

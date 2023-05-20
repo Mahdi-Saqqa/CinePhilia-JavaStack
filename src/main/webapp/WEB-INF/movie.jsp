@@ -150,7 +150,10 @@
                             </form>
 
                             <button class="btn btn-primary" onclick="createReviewBox(this)">Add Review</button>
-                            <form action="/movie/${movie.id}/addreview" method="post" id="reviewBoxContainer"></form>
+                            <form action="/movie/${movie.id}/addreview" method="post" id="reviewBoxContainer">
+                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                               
+                            </form>
                             <div>
                                 <c:forEach var="review" items="${movie.reviews}">
 

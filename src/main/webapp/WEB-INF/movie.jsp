@@ -157,16 +157,16 @@
                             <div>
                                 <c:forEach var="review" items="${movie.reviews}">
 
-                                    <div class="card mb-3" style="max-width: 540px;">
+                                    <div class="card mb-3 bg-light text-black" style="max-width: 540px;">
                                         <div class="row g-0">
-                                            <div class="col-md-4">
-                                                <img src="..." class="img-fluid rounded-start" alt="...">
+                                            <div class="col-md-4 border-end">
+                                                <p class="text-center"><img src="/img/profile.png" class="rounded-start w-50 mx-auto mt-3 " alt="..."></p>
+                                                <p class="text-center text-black"> ${review.user.username}</p>
                                             </div>
                                             <div class="col-md-8">
-                                                <div class="card-body">
-                                                    <h5 class="card-title">Card title</h5>
-                                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                                <div class="card-body ">
+                                                    <p class="card-text text-black">${review.review}</p>
+                                                    <p class="card-text text-black"><small class="text-muted"><fmt:formatDate value="${review.updatedAt}" pattern="MMMM dd"/></small></p>
                                                 </div>
                                             </div>
                                         </div>

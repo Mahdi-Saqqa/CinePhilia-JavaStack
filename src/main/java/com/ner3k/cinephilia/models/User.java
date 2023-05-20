@@ -61,11 +61,7 @@ public class User {
     @OneToMany(mappedBy="user", fetch=FetchType.LAZY)
     private List<Review> reviews;
 
-    @Column(updatable = false)
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate createdAt;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate updatedAt;
+
 
     @OneToMany( mappedBy = "user",fetch = FetchType.LAZY)
     List<Rate> rates;
@@ -80,7 +76,11 @@ public class User {
         return movieIds;
     }
 
-
+    @Column(updatable = false)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate createdAt;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate updatedAt;
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDate.now();

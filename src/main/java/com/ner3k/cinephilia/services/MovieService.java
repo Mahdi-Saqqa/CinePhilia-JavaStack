@@ -1,10 +1,7 @@
 package com.ner3k.cinephilia.services;
 
 
-import com.ner3k.cinephilia.models.Genre;
-import com.ner3k.cinephilia.models.Movie;
-import com.ner3k.cinephilia.models.Rate;
-import com.ner3k.cinephilia.models.User;
+import com.ner3k.cinephilia.models.*;
 import com.ner3k.cinephilia.repositories.GenreRepository;
 import com.ner3k.cinephilia.repositories.MovieRepository;
 import com.ner3k.cinephilia.repositories.RateRepository;
@@ -13,6 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+
+import com.ner3k.cinephilia.repositories.ReviewRepository;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -29,7 +28,8 @@ public class MovieService {
     private GenreRepository genreRepository;
     @Autowired
     private RateRepository rateRepository;
-
+    @Autowired
+    private ReviewRepository reviewRepository;
 
     public List<Movie> getMoviesByGenre(Long id) throws ParseException {
         Genre genre = genreRepository.getById(id);
@@ -121,6 +121,14 @@ public class MovieService {
 
 
         return movieRepository.save(movie);
+    }
+
+    public Review addReviewToMovie( Movie movie,User user,String reviewbody){
+        Review review = new Review();
+        review.setReview(reviewbody);
+       review.setUser(user);
+       review.setMovie(movie);
+       return reviewRepository.save(review);
     }
     public List<Movie> getAllMovies() {
 

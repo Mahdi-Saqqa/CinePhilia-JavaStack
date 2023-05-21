@@ -120,9 +120,9 @@
         </div>
         <div class="col col-sm-9 col-xl-11 px-sm-10 px-12 ">
             <main class="row overflow-auto canvas">
-<%--                                        <iframe width="420" height="315"--%>
-<%--                                                src="https://www.youtube.com/embed/${movie.trailer}?autoplay=1&mute=1">--%>
-<%--                                        </iframe>--%>
+                                        <iframe width="420" height="315"
+                                                src="https://www.youtube.com/embed/${movie.trailer}?autoplay=1&mute=1">
+                                        </iframe>
                         <div class="col-md-6 col-sm-12 col-6 h-sm-100 ">
                             <img class="rounded mx-auto w-75 ms-5 img-fluid"  src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster}" alt="Movie Poster" class="img-fluid">
                         </div >
@@ -148,7 +148,7 @@
                                 <a class="bi bi-star fs-3" data-rating="4" href="/rateMovie/${movie.id}/4"></a>
                                 <a class="bi bi-star fs-3" data-rating="5" href="/rateMovie/${movie.id}/5"></a>
                             </form>
-
+                            <p>${errorMessage}</p>
                             <button class="btn btn-primary my-3" onclick="createReviewBox(this)">Add Review</button>
                             <form action="/movie/${movie.id}/addreview" method="post" id="reviewBoxContainer">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -165,7 +165,7 @@
                                             <div class="w-75">
                                                 <div class=" d-flex  flex-column justify-content-between h-100 w-100 container-fluid">
                                                     <p class="card-text text-black ms-4">${review.review}</p>
-                                                    <p class="card-text text-black align-self-end"><small class="text-muted">${review.createdAt}</small>
+                                                    <p class="card-text text-black align-self-end"><small class="text-muted text-black">${review.createdAt}</small>
 
                                                         <c:choose>
                                                             <c:when test="${review.user.id == currentUser.id}">

@@ -122,8 +122,12 @@ public class UserController {
 
 
     @GetMapping("/movie/{id}")
-    public String view(Model model, HttpSession session,@PathVariable("id")Long id,Principal principal) throws ParseException{
+    public String view(@RequestParam(value = "error", required = false) String error, Model model, HttpSession session,@PathVariable("id")Long id,Principal principal) throws ParseException{
         Movie movie= movieService.getMovie(id);
+
+        if(error!=null){
+            model.addAttribute("errorMessage", "review should be at least 8 characters long");
+        }
         if (principal != null){
             String username = principal.getName();
             User currentUser = userService.findByUsername(username);
@@ -247,7 +251,9 @@ public class UserController {
     }
     @PostMapping("/movie/{id}/addreview")
     public  String addReview(Principal principal, @PathVariable("id") Long id, @RequestParam(value = "review")String review) throws ParseException{
-
+            if(review.length() <8){
+                return "redirect:/movie/"+id+"?error=true";
+            }
             String username = principal.getName();
             User currentUser = userService.findByUsername(username);
          Movie movie = movieService.getMovie(id);

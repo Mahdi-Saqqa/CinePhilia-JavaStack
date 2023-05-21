@@ -129,6 +129,7 @@ public class MovieService {
 
     public Review addReviewToMovie( Movie movie,User user,String reviewbody){
         Review review = new Review();
+
         review.setReview(reviewbody);
        review.setUser(user);
        review.setMovie(movie);

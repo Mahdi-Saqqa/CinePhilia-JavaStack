@@ -157,29 +157,38 @@
 
                                 <c:forEach var="review" items="${movie.reviews}">
 
-                                    <div class="d-flex mb-3 bg-light text-black rounded" style="max-width: 540px;">
-                                            <div class=" w-25 border-end">
-                                                <p class="text-center"><img src="/img/profile.png" class="rounded-start w-50 mx-auto mt-3 " alt="..."></p>
-                                                <p class="text-center text-black"> ${review.user.username}</p>
-                                            </div>
-                                            <div class="w-75">
-                                                <div class=" d-flex  flex-column justify-content-between h-100 w-100 container-fluid">
-                                                    <p class="card-text text-black ms-4">${review.review}</p>
-                                                    <p class="card-text text-black align-self-end"><small class="text-muted text-black">${review.createdAt}</small>
 
+                                    <div class="d-flex mb-3 bg-light text-black rounded" style="max-width: 540px;">
+
+
+
+                                            <div class="w-100">
+                                                <div class="d-flex justify-content-between w-100  ">
+                                                <h5 class="text-black my-2 mx-2">A review by ${review.user.username} </h5>
+                                                <small class="text-muted text-black my-2 mx-2">${review.createdAt}</small>
+                                                </div>
+                                                <p class="card-text text-black ms-4">${review.review}</p>
+                                                <div class=" d-flex  flex-column justify-content-between  w-100 container-fluid">
+
+
+                                                    <p class="card-text text-black align-self-end justify-content-end">
                                                         <c:choose>
                                                             <c:when test="${review.user.id == currentUser.id}">
-                                                                <a href="/deletereview/${review.id}" class="text-muted">delete</a>
-                                                            </c:when>
+                                                                <a href="/deletereview/${review.id}" class="text-muted"><i class="bi bi-trash3 text-black"></i></a>
+                                                            <a href="/editreview/${review.id}" class="text-muted"><i class="bi bi-pen text-black"></i></a>
+
+                                                        </c:when>
                                                             <c:when test="${review.user.id != currentUser.id}">
                                                                 <c:forEach var="role" items="${currentUser.roles}">
                                                                     <c:if test="${role.name == 'ROLE_ADMIN'}">
-                                                                        <a href="/deletereview/${review.id}" class="text-muted">delete</a>
-                                                                    </c:if>
+                                                                        <a href="/deletereview/${review.id}" class="text-muted"><i class="bi bi-trash3 text-black"></i></a>
+                                                            <a href="/editreview/${review.id}" class="text-muted"><i class="bi bi-pen text-black"></i></a>
+
+                                                        </c:if>
                                                                 </c:forEach>
                                                             </c:when>
                                                         </c:choose>
-                                                    </p>
+
 
                                                 </div>
 

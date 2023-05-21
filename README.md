@@ -11,10 +11,32 @@ Users struggle to find diverse film recommendations and face challenges in acces
 reliable movie data. CinePhilia, aims to address these challenges by providing a 
 centralized platform with a wide range of features.
 
-## The Model OR ERD Diagram
+## Team Members
+ Mahdi Saqqa https://github.com/Mahdi-Saqqa
+ 
+ Taleen Khoury https://github.com/TaleenMusa
+ 
+ Shatha Morales https://github.com/ShathaMorales
+ 
+ Khalid Hassouneh https://github.com/KhalidHassouna
+ 
+## ERD Diagram
 
+<img src="https://github.com/Mahdi-Saqqa/CinePhilia/assets/126386351/a7386251-bf4f-4949-932a-20d2a2a7e014.png" >
 
 ## Relationships
+Many To Many Realationships
+1- User & Movie  
+
+2- Movie & Review
+
+3- Movie & Rate
+
+4- Movie & Genre
+
+5- User & Role (Admin/User)
+
+
 
 ## Security and Validation
 Control Access for website page using Spring Security.
@@ -23,7 +45,8 @@ Control Access for website page using Spring Security.
 
 Login & Logout validation
 
-<img src=".png" >
+
+
 ### Website pages
 
 1- View the list of Movies available (put the path for the main page)
@@ -37,5 +60,27 @@ Login & Logout validation
 3- Add Reviews and Ratings to the movie
 
 <img src="https://github.com/Mahdi-Saqqa/CinePhilia/assets/126386351/7cf47fc6-edd1-41be-bfd1-0e7815087161.png" >
+
+4- Wishlist 
+
+5- Adimn page 
+
+6- Discover
+
+## Technologies Used:
+•	Java
+
+•	IntelliJ IDEA
+
+•	JavaScript
+
+•	CSS3
+
+•	HTML5
+
+•	Bootstrap
+
+•	MySQL
+
 
 

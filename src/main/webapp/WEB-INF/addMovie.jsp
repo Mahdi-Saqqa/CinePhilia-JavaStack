@@ -121,7 +121,7 @@
         <div class="col col-sm-9 col-xl-11 px-sm-10 px-12 sticky-top ">
             <main class="row overflow-auto canvas">
 
-                    <div class="row w-25 my-5 mx-auto">
+                    <div class="row w-25 my-5 mx-auto h-25">
                         <input type="text" id="search-box" class="form-control">
                     </div>
                     <div class="row  mt-5 w-100 justify-content-evenly" id="result-box">

@@ -149,6 +149,13 @@
                                 <a class="bi bi-star fs-3" data-rating="4" href="/rateMovie/${movie.id}/4"></a>
                                 <a class="bi bi-star fs-3" data-rating="5" href="/rateMovie/${movie.id}/5"></a>
                             </form>
+                                <c:forEach var="role" items="${currentUser.roles}">
+                                    <c:if test="${role.name == 'ROLE_ADMIN'}">
+                                        <a href="/deletereview/${movie.id}" class="text-muted"><i class="bi bi-trash3 text-black"></i></a>
+                                        <a href="/editreview/${movie.id}" class="text-muted"><i class="bi bi-pen text-black"></i></a>
+
+                                    </c:if>
+                                </c:forEach>
                             <p>${errorMessage}</p>
                             <button class="btn btn-primary my-3" onclick="createReviewBox(this)">Add Review</button>
                             <form action="/movie/${movie.id}/addreview" method="post" id="reviewBoxContainer">

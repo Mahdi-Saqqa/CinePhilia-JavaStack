@@ -10,89 +10,187 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <c:if test="${currentUser.dark}">
+
+        <style>
+            *{
+                color:white;
+            }
+        </style>
+    </c:if>
+    <c:if test="${!currentUser.dark}">
+
+        <style>
+            a{
+                color:black;
+            }
+        </style>
+    </c:if>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <title>Tacos</title>
+    <title>CinePhilia</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/style.css"> <!-- change to match your file/naming structure -->
-    <style>
-        * {
-            color:white;
-        }
-        #box {
-            transition: 500ms;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/index.css"> <!-- change to match your file/naming structure -->
+
 </head>
-<body class="bg-dark">
+<body
+        <c:if test="${currentUser.dark}">
+            class=" bg-dark text-white"
+        </c:if>
+>
 <div class="container-fluid overflow-hidden">
-    <div class="row overflow-auto">
-        <div class="col-12 col-sm-2 col-xl-2 px-sm-2 px-2 bg-dark d-flex sticky-top">
-            <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2 text-white">
-                <a href="/" class="d-flex align-items-center py-3 pb-sm-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5">C<span class="d-none d-sm-inline">inePhilia</span></span>
+    <div class="row vh-100 overflow-auto">
+        <%--        <div class="col-12 col-sm-3 col-xl-1 px-sm-2 px-0 bg-dark d-flex sticky-top h-sm-100">--%>
+        <div class="col-12 col-sm-2 col-xl-1 px-sm-1 px-0   d-flex sticky-lg-top sticky-md-top h-sm-100">
+
+            <div class="d-flex flex-sm-column flex-row flex-grow-1 align-items-center align-items-sm-start px-3 pt-2
+<c:if test="${currentUser.dark}">
+        bg-dark text-white
+                </c:if>">
+                <a href="/" class="d-flex align-items-center pb-sm-3 mb-md-0 me-md-auto  text-decoration-none">
+                    <span class="fs-5"><img src="/img/Logo-2.png" width="30em" height="30em"></span> <span class="d-none d-sm-inline ms-1">CinePhilia</span>
                 </a>
                 <ul class="nav nav-pills flex-sm-column flex-row flex-nowrap flex-shrink-1 flex-sm-grow-0 flex-grow-1 mb-sm-auto mb-0 justify-content-center align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="#" class="nav-link px-sm-0 px-2 py-4">
+                        <a href="/" class="nav-link px-sm-0 px-2 py-4">
                             <i class="fs-5 bi-house"></i><span class="ms-1 d-none d-sm-inline">Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-sm-0 px-2 py-4">
+                        <a href="/search" class="nav-link px-sm-0 px-2 py-4">
                             <i class="bi bi-search"></i><span class="ms-1 d-none d-sm-inline">Search</span> </a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-sm-0 px-2 py-4">
+                        <a href="/discover" class="nav-link px-sm-0 px-2 py-4">
                             <i class="bi bi-shuffle"></i><span class="ms-1 d-none d-sm-inline">Discover</span></a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-sm-0 px-2 py-4">
+                        <a href="/wishlist" class="nav-link px-sm-0 px-2 py-4">
                             <i class="fs-5 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Wishlist</span></a>
                     </li>
                     <li>
-                        <a href="#" class="nav-link px-sm-0 px-2 py-4">
+                        <a href="/aboutus" class="nav-link px-sm-0 px-2 py-4">
                             <i class="fs-5 bi-people"></i><span class="ms-1 d-none d-sm-inline">About us</span> </a>
                     </li>
                 </ul>
-                <div class="dropdown py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="hugenerd" width="28" height="28" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-1">Joe</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
-                        <li><a class="dropdown-item" href="#">Settings</a></li>
-                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Sign out</a></li>
-                    </ul>
+                <div class="py-sm-4 mt-sm-auto ms-auto ms-sm-0 flex-shrink-1">
+                    <div class="dropdown">
+                        <a href="#" class="d-flex align-items-center  text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <img src="https://github.com/mdo.png" alt="hugenerd" width="28" height="28" class="rounded-circle">
+                            <span class="d-none d-sm-inline mx-1">
+                                <c:if test="${currentUser.username == null}">
+                                    Guest
+                                </c:if>
+                                ${currentUser.username}
+                            </span>
+                        </a>
+                        <ul id="user-list" class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                            <c:forEach var="role" items="${currentUser.roles}">
+
+                                <c:if test="${role.name == 'ROLE_ADMIN'}">
+                                    <li><a class="dropdown-item" href="/admin/newmovie">Add Movie</a></li>
+                                </c:if>
+                                <c:if test="${role.name == 'ROLE_USER'}">
+                                    <li><a class="dropdown-item" href="/settings">Settings</a></li>
+
+                                    <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                </c:if>
+
+                            </c:forEach>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <c:if test="${currentUser != null}">
+                                    <form id="logoutForm" method="POST" action="/logout" class="dropdown-item">
+                                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                                        <input type="submit" class=" dropdown-item"  value="Logout!" />
+                                    </form>
+                                </c:if>
+                                <c:if test="${currentUser == null}">
+                                    <a href="/login" class="dropdown-item">Login</a>
+                                </c:if>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="col col-sm-9 col-xl-11 px-sm-10 px-12 sticky-top ">
+            <main class="row overflow-auto canvas">
 
-        <div class="col d-flex flex-column align-self-center">
-            <div class="d-flex justify-content-center align-content-center flex-column ">
+                    <div class="row w-25 my-5 mx-auto">
+                        <input type="text" id="search-box" class="form-control">
+                    </div>
+                    <div class="row  mt-5 w-100 justify-content-evenly" id="result-box">
+
+                    </div>
+            </main>
 
 
-            <h1>Add Movie <c:out value="${currentUser.username}"></c:out></h1>
-
-            <form method="POST" action="/admin/newmovie">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <input class="form-control"  name="movieId" >
-
-                <input class="m-2 p-2" style="background-color: slateblue " type="submit" value="Add"/>
-            </form>
-            </div>
+        </div>
     </div>
 </div>
-</div>
-<link rel="stylesheet" href="/css/style.css">
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.11/dist/gsap.min.js"></script>
-<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/js/script.js"></script><!-- change to match your file/naming structure -->
+<script src="/js/index.js" ></script>
+<script
+        src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#search-box").on("keydown", function() {
+            var query = $("#search-box").val();
+            console.log(query);
+            $.ajax({
+                url: "https://api.themoviedb.org/3/search/movie?api_key=936ec287a61d8548efeb41653e17f492&include_adult=false&language=en-US&page=1&query="+query,
+                method: "GET",
+                success: function(data) {
+                    var resultBox = $("#result-box");
+                    console.log(data);
+                    resultBox.empty();
+                    console.log("started ajax request");
+                    var results = data["results"];
+                    for (var i = 0; i < results.length; i++) {
+                        var movie = results[i];
+                        var movieId = movie["id"];
+                        console.log(movieId);
+                        var movieTitle = movie["title"];
+                        var moviePoster = movie["backdrop_path"];
+                        console.log(movieTitle);
+                        console.log(moviePoster);
+                        var movieCard =
+                            '<a href="/movie/'+
+                            movieId+
+                            '" class="card   ratio-16x9  movie-card  m-3  "  style="width: 30vh; background-image: url('+"https://www.themoviedb.org/t/p/w355_and_h200_bestv2"+
+                            moviePoster +
+                            `); background-size: cover;"onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)">`  +
+                            `<p class="text-center mt-4 h2 text-secondary " id="title" >`+
+                            movieTitle +
+                            `</p>       </a>`;
+
+                        var addButton = document.createElement("form");
+                        addButton.setAttribute("action","/admin/newmovie");
+                        addButton.setAttribute("method","POST");
+                        addButton.innerHTML=`<input class="btn btn-light"  type="submit" name="movieId" value="`+ movieId +`"/>                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+`
+
+                        resultBox.append(movieCard);
+                        resultBox.append(addButton);
+
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error(textStatus, errorThrown);
+                }
+            });
+        });
+    });
+</script>
+
+
 </body>
 </html>

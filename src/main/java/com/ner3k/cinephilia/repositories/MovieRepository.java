@@ -10,4 +10,5 @@ import org.springframework.stereotype.Repository;
 public interface MovieRepository extends CrudRepository<Movie, Long> {
      List<Movie> findAll();
      Optional <Movie> findById(Long id);
+     List<Movie> getMoviesByTitleContains(String title);
 }

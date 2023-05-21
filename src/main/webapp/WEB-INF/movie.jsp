@@ -18,7 +18,7 @@
             }
         </style>
     </c:if>
-    <c:if test="${!currentUser.dark}">
+    <c:if test="${currentUser.dark==null || !currentUser.dark}">
 
         <style>
             a{
@@ -118,15 +118,15 @@
                 </div>
             </div>
         </div>
-        <div class="col col-sm-9 col-xl-11 px-sm-10 px-12 sticky-top ">
+        <div class="col col-sm-9 col-xl-11 px-sm-10 px-12 ">
             <main class="row overflow-auto canvas">
-                        <%--                <iframe width="420" height="315"--%>
-                        <%--                        src="https://www.youtube.com/embed/${movie.trailer}?autoplay=1&mute=1">--%>
-                        <%--                </iframe>--%>
-                        <div class="col-md-6 col-sm-12 col-6">
-                            <img class="rounded mx-auto w-75 ms-5"  src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster}" alt="Movie Poster" class="img-fluid">
-                        </div>
-                        <div class="col-md-5 col-sm-12 ">
+                                        <iframe width="420" height="315"
+                                                src="https://www.youtube.com/embed/${movie.trailer}?autoplay=1&mute=1">
+                                        </iframe>
+                        <div class="col-md-6 col-sm-12 col-6 h-sm-100 ">
+                            <img class="rounded mx-auto w-75 ms-5 img-fluid"  src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster}" alt="Movie Poster" class="img-fluid">
+                        </div >
+                        <div class="col-md-5 col-sm-12 h-sm-100">
                             <h1 class="display-4 my-5">${movie.title}</h1>
                             <p class="lead me-5 text-wrap">${movie.overview}</p>
                             <p>genres:
@@ -148,31 +148,45 @@
                                 <a class="bi bi-star fs-3" data-rating="4" href="/rateMovie/${movie.id}/4"></a>
                                 <a class="bi bi-star fs-3" data-rating="5" href="/rateMovie/${movie.id}/5"></a>
                             </form>
-
-                            <button class="btn btn-primary" onclick="createReviewBox(this)">Add Review</button>
+                            <p>${errorMessage}</p>
+                            <button class="btn btn-primary my-3" onclick="createReviewBox(this)">Add Review</button>
                             <form action="/movie/${movie.id}/addreview" method="post" id="reviewBoxContainer">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                
                             </form>
-                            <div>
+
                                 <c:forEach var="review" items="${movie.reviews}">
 
-                                    <div class="card mb-3 bg-light text-black" style="max-width: 540px;">
-                                        <div class="row g-0">
-                                            <div class="col-md-4 border-end">
+                                    <div class="d-flex mb-3 bg-light text-black rounded" style="max-width: 540px;">
+                                            <div class=" w-25 border-end">
                                                 <p class="text-center"><img src="/img/profile.png" class="rounded-start w-50 mx-auto mt-3 " alt="..."></p>
                                                 <p class="text-center text-black"> ${review.user.username}</p>
                                             </div>
-                                            <div class="col-md-8">
-                                                <div class="card-body ">
-                                                    <p class="card-text text-black">${review.review}</p>
-                                                    <p class="card-text text-black"><small class="text-muted"><fmt:formatDate value="${review.updatedAt}" pattern="MMMM dd"/></small></p>
+                                            <div class="w-75">
+                                                <div class=" d-flex  flex-column justify-content-between h-100 w-100 container-fluid">
+                                                    <p class="card-text text-black ms-4">${review.review}</p>
+                                                    <p class="card-text text-black align-self-end"><small class="text-muted text-black">${review.createdAt}</small>
+
+                                                        <c:choose>
+                                                            <c:when test="${review.user.id == currentUser.id}">
+                                                                <a href="/deletereview/${review.id}" class="text-muted">delete</a>
+                                                            </c:when>
+                                                            <c:when test="${review.user.id != currentUser.id}">
+                                                                <c:forEach var="role" items="${currentUser.roles}">
+                                                                    <c:if test="${role.name == 'ROLE_ADMIN'}">
+                                                                        <a href="/deletereview/${review.id}" class="text-muted">delete</a>
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                            </c:when>
+                                                        </c:choose>
+                                                    </p>
+
                                                 </div>
+
                                             </div>
                                         </div>
-                                    </div>
                                 </c:forEach>
-                        </div>
+
                     </div>
 
                 </div>

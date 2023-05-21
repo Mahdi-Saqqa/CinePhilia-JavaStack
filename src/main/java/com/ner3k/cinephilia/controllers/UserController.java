@@ -281,4 +281,19 @@ public class UserController {
 
             return "redirect:/movie/"+review.getMovie().getId();
         }
+
+    @PostMapping("/review/{id}/edit")
+    public String editReview(Principal principal, @PathVariable("id") Long id, @RequestParam(value = "review")String review) throws ParseException{
+        if(review.length() <8){
+            return "redirect:/review/"+id+"?error=true";
+        }
+
+        String username = principal.getName();
+        User currentUser = userService.findByUsername(username);
+        Review review1 = movieService.getReviewByID(id);
+        if(Objects.equals(currentUser.getId(), review1.getUser().getId())){
+            movieService.updateReview(review1,review);
+        }
+        return "redirect:/movie/"+review1.getMovie().getId();
+    }
     }

@@ -146,7 +146,7 @@
             var query = $("#search-box").val();
             console.log(query);
             $.ajax({
-                url: "https://09d5-45-117-5-148.ngrok-free.app/api/v1/movies/findByTitle/"+query,
+                url: "https://6eaf-45-117-5-148.ngrok-free.app/api/v1/movies/findByTitle/"+query,
                 method: "GET",
                 success: function(data) {
                     var resultBox = $("#result-box");

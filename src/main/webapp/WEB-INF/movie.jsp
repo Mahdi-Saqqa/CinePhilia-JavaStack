@@ -32,6 +32,37 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>CinePhilia</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <style>
+        .page {
+            position: relative;
+            height:100%;
+        }
+
+        .popup {
+            position:absolute;
+            z-index:5;
+            top:-20vh;
+            left:-50vw;
+            width:80vw;
+            aspect-ratio: 16/9;
+            background:rgba(0,0,0,0.7);
+            opacity:0;
+            visibility:hidden;
+            transition:.3s ease;
+        }
+
+        .show-popup .popup {
+            opacity:1;
+            visibility: visible;
+        }
+
+        .popup > iframe {
+            position:absolute;
+            top:50px;
+            left:50%;
+            margin-left:-280px;
+        }
+    </style>
     <link rel="stylesheet" href="/css/index.css"> <!-- change to match your file/naming structure -->
 
 </head>
@@ -120,12 +151,19 @@
         </div>
         <div class="col col-sm-9 col-xl-11 px-sm-10 px-12 ">
             <main class="row overflow-auto canvas">
-                <div class="col-11 ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/${movie.trailer}?autoplay=1&mute=1" allowfullscreen></iframe>
-                </div>
+
+
+
+
+
+
+
 
                         <div class="col-md-6 col-sm-12 col-6 h-sm-100 ">
+
+
                             <img class="rounded mx-auto w-75 ms-5 img-fluid"  src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2${movie.poster}" alt="Movie Poster" class="img-fluid">
+
                         </div >
                         <div class="col-md-5 col-sm-12 h-sm-100">
                             <h1 class="display-4 my-5">${movie.title}</h1>
@@ -135,6 +173,18 @@
                                     <a href="/genre/${genre.id}">${genre.name}</a>
                                 </c:forEach>
                             </p>
+                            <div class="page">
+                                <p><a href="#media-popup" data-media="//www.youtube.com/embed/YoXa2Pl7Hk0" class="btn btn-warning fw-bold">Watch Trailer</a></p>
+
+                                <div class="popup" id="media-popup">
+                                    <iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+                                </div>
+                            </div>
+
+
+
+
+
                             <c:if test="${movie.avgRates()==0}">
                                 <span class="fs-6">Be the first to rate this movie</span>
                             </c:if>
@@ -151,8 +201,8 @@
                             </form>
                                 <c:forEach var="role" items="${currentUser.roles}">
                                     <c:if test="${role.name == 'ROLE_ADMIN'}">
-                                        <a href="/deletereview/${movie.id}" class="text-muted"><i class="bi bi-trash3 text-black"></i></a>
-                                        <a href="/editreview/${movie.id}" class="text-muted"><i class="bi bi-pen text-black"></i></a>
+                                        <a href="/deletereview/${movie.id}" class="text-muted"><i class="bi bi-trash3 text-white-50"></i></a>
+                                        <a href="/editreview/${movie.id}" class="text-muted"><i class="bi bi-pen text-white-50"></i></a>
 
                                     </c:if>
                                 </c:forEach>
@@ -163,50 +213,45 @@
                                
                             </form>
 
-                                <c:forEach var="review" items="${movie.reviews}">
-
-
-                                    <div class="d-flex mb-3 bg-light text-black rounded" style="max-width: 540px;">
-
-
-
-                                            <div class="w-100">
-                                                <div class="d-flex justify-content-between w-100  ">
-                                                <h5 class="text-black my-2 mx-2">A review by ${review.user.username} </h5>
-                                                <small class="text-muted text-black my-2 mx-2">${review.createdAt}</small>
-                                                </div>
-                                                <p class="card-text text-black ms-4">${review.review}</p>
-                                                <div class=" d-flex  flex-column justify-content-between  w-100 container-fluid">
-
-
-                                                    <p class="card-text text-black align-self-end justify-content-end">
-                                                        <c:choose>
-                                                            <c:when test="${review.user.id == currentUser.id}">
-                                                                <a href="/deletereview/${review.id}" class="text-muted"><i class="bi bi-trash3 text-black"></i></a>
-                                                            <a href="/editreview/${review.id}" class="text-muted"><i class="bi bi-pen text-black"></i></a>
-
-                                                        </c:when>
-                                                            <c:when test="${review.user.id != currentUser.id}">
-                                                                <c:forEach var="role" items="${currentUser.roles}">
-                                                                    <c:if test="${role.name == 'ROLE_ADMIN'}">
-                                                                        <a href="/deletereview/${review.id}" class="text-muted"><i class="bi bi-trash3 text-black"></i></a>
-                                                            <a href="/editreview/${review.id}" class="text-muted"><i class="bi bi-pen text-black"></i></a>
-
-                                                        </c:if>
-                                                                </c:forEach>
-                                                            </c:when>
-                                                        </c:choose>
-
-
-                                                </div>
-
-                                            </div>
+                            <c:forEach var="review" items="${movie.reviews}">
+                                <div class="d-flex mb-3 bg-light text-black rounded review-container" data-review-id="${review.id}">
+                                    <div class="w-100 card-content">
+                                        <div class="d-flex justify-content-between w-100">
+                                            <h5 class="text-black my-2 mx-2">A review by ${review.user.username}</h5>
+                                            <small class="text-muted text-black my-2 mx-2">${review.createdAt}</small>
                                         </div>
-                                </c:forEach>
+                                        <p class="card-text text-black ms-4 review-text">${review.review}</p>
+                                        <div class="form-container" style="display: none;">
+                                            <form action="/review/${review.id}/edit" method="post" class="edit-review-form">
+                                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+                                                <input type="hidden" name="reviewId" value="${review.id}" />
+                                                <textarea name="review" class="form-control edit-review" rows="3">${review.review}</textarea>
+                                                <input type="submit" class="btn btn-primary my-auto" value="Update Review" />
+                                            </form>
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-between w-100 container fluid">
+                                            <p class="card-text text-black align-self-end justify-content-end">
+                                                <c:choose>
+                                                    <c:when test="${review.user.id == currentUser.id}">
+                                                        <a href="/deletereview/${review.id}" class="text-muted"><i class="bi bi-trash3 text-black"></i></a>
+                                                        <i class="bi bi-pen text-black edit-btn"></i>
+                                                    </c:when>
+                                                    <c:when test="${review.user.id != currentUser.id}">
+                                                        <c:forEach var="role" items="${currentUser.roles}">
+                                                            <c:if test="${role.name == 'ROLE_ADMIN'}">
+                                                                <a href="/deletereview/${review.id}" class="text-muted"><i class="bi bi-trash3 text-black"></i></a>
+                                                            </c:if>
+                                                        </c:forEach>
+                                                    </c:when>
+                                                </c:choose>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:forEach>
 
                     </div>
 
-                </div>
 
 
             </main>
@@ -221,5 +266,70 @@
 <script src="https://code.jquery.com/jquery-3.7.0.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+
+
+<script>
+    $("[data-media]").on("click", function(e) {
+        e.preventDefault();
+        var $this = $(this);
+        var videoUrl = $this.attr("data-media");
+        var popup = $this.attr("href");
+        var $popupIframe = $(popup).find("iframe");
+
+        $popupIframe.attr("src", videoUrl);
+
+        $this.closest(".page").addClass("show-popup");
+    });
+
+    $(".popup").on("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        $(".page").removeClass("show-popup");
+    });
+
+    $(".popup > iframe").on("click", function(e) {
+        e.stopPropagation();
+    });
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        // Show form and hide text card
+        function switchToForm(container) {
+            container.find('.review-text').hide();
+            container.find('.form-container').show();
+        }
+
+        // Show text card and hide form
+        function switchToTextCard(container) {
+            container.find('.form-container').hide();
+            container.find('.review-text').show();
+        }
+
+        // Switch between text card and form
+        function switchCard(container) {
+            const formContainer = container.find('.form-container');
+            const reviewText = container.find('.review-text');
+            const editBtn = container.find('.edit-btn');
+
+            editBtn.click(function() {
+                if (formContainer.is(':hidden')) {
+                    switchToForm(container);
+                } else {
+                    switchToTextCard(container);
+                }
+            });
+        }
+
+        // Iterate over each review container
+        $('.review-container').each(function() {
+            const container = $(this);
+            switchCard(container);
+        });
+    });
+</script>
+
+
 </body>
 </html>

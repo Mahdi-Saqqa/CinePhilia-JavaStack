@@ -128,11 +128,16 @@
                     <div style="height:60vh; background-image: url('/img/oculus.jpg');"></div>
                     <div style="height:60vh; background-image: url('/img/moonlight.jpg');"></div>
                 </div>
-                <div class="row  mt-5 w-100 justify-content-evenly">
+<%--             <div >--%>
+                 <hr class="mt-5">
+<%--             </div>--%>
+                <h3 class="text-align-center">New Releases <i class="bi bi-caret-right"></i> </h3>
+                <div class="row w-100 justify-content-evenly">
                     <c:forEach var="movie" items="${movies}">
-                        <a href="/movie/${movie.id}" class=" ratio-16x9 m-3 bg-dark"  style="width: 30vh; url(); background-size: cover;" onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)"  >
-                                <img src="https://www.themoviedb.org/t/p/w355_and_h200_bestv2${movie.poster}">
+                        <a href="/movie/${movie.id}" class="ratio-16x9 m-3 bg-dark"  style="width: 30vh; background-size: cover; text-decoration: none;" onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)"  >
+                                <img class="rounded" src="https://www.themoviedb.org/t/p/w355_and_h200_bestv2${movie.poster}">
                             <p class="text- mt-2 h6" id="title" >${movie.title}</p>
+                            <p class="text-muted" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${movie.overview}</p>
                         </a>
                     </c:forEach>
                 </div>

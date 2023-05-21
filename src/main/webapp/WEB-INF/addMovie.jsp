@@ -171,13 +171,16 @@
                             `<p class="text-center mt-4 h2 text-secondary " id="title" >`+
                             movieTitle +
                             `</p>       </a>`;
-                        resultBox.append(movieCard);
 
                         var addButton = document.createElement("form");
-                        addButton.setAttribute("action","/api/v1/newmovie/");
+                        addButton.setAttribute("action","/admin/newmovie");
                         addButton.setAttribute("method","POST");
-                        addButton.innerText=`<input class="btn"  type="submit" value="`+ movieId +`"/>`
-                        // movieCard.appendChild(addButton);
+                        addButton.innerHTML=`<input class="btn btn-light"  type="submit" name="movieId" value="`+ movieId +`"/>                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+`
+
+                        resultBox.append(movieCard);
+                        resultBox.append(addButton);
+
                     }
                 },
                 error: function(jqXHR, textStatus, errorThrown) {

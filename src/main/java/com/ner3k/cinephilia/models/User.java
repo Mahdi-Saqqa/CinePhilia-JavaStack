@@ -6,13 +6,13 @@ import jakarta.validation.constraints.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.NaturalId;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -42,8 +42,6 @@ public class User {
 
 
     @Transient
-    @NotEmpty(message = "Confirm password is required")
-    @Size(min = 8, max = 128, message = "Confirm password must be at least 8 and at most 128 characters")
     private String confirmPassword;
 
     @NotNull

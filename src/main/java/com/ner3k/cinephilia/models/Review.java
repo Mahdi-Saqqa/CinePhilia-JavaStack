@@ -23,7 +23,7 @@ public class Review {
 
 
     @NotEmpty
-    @Size(min=10)
+    @Size(min=9)
     private String review;
 
     @Column(updatable = false)

@@ -85,16 +85,16 @@ public class MovieService {
         return restTemplate.getForObject(uri, HashMap.class);
     }
 
-    public Movie addMovie(String id) throws ParseException, IOException {
+    public Movie addMovie(String id ,boolean isAdult) throws ParseException, IOException {
 
         HashMap result = getMovie(id);
         System.out.println(result);
         Movie movie = new Movie();
         movie.setTitle((String) result.get("title"));
-        movie.setTrailer((String) getMovieTrailer(id));
+        movie.setTrailer(getMovieTrailer(id));
         movie.setTmdbId(id);
         System.out.println(movie.getTitle());
-        movie.setAdult((boolean) result.get("adult"));
+        movie.setAdult(isAdult);
         movie.setOverview((String) result.get("overview"));
         movie.setPoster((String) result.get("poster_path"));
         movie.setLanguage((String) result.get("original_language"));

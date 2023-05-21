@@ -101,8 +101,9 @@ public class UserController {
     }
 
     @PostMapping("/admin/newmovie")
-    public String addMovieAction(@RequestParam("movieId") String movieId, Model model, HttpSession session) throws ParseException, ParseException, IOException {
-        Movie movie=  movieService.addMovie(movieId);
+    public String addMovieAction(@RequestParam("movieId") String movieId,@RequestParam("isAdult") boolean isAdult ,Model model, HttpSession session) throws ParseException, ParseException, IOException {
+
+        Movie movie=  movieService.addMovie(movieId,isAdult);
 
         return "redirect:/movie/"+movie.getId();
     }
@@ -251,7 +252,7 @@ public class UserController {
     }
     @PostMapping("/movie/{id}/addreview")
     public  String addReview(Principal principal, @PathVariable("id") Long id, @RequestParam(value = "review")String review) throws ParseException{
-            if(review.length() <8){
+            if(review.length() <10){
                 return "redirect:/movie/"+id+"?error=true";
             }
             String username = principal.getName();
@@ -296,4 +297,18 @@ public class UserController {
         }
         return "redirect:/movie/"+review1.getMovie().getId();
     }
+
+    @GetMapping("/switchmode")
+    public String switchMode(Principal principal) throws ParseException {
+        String username = principal.getName();
+        System.out.println(username);
+
+        User currentUser = userService.findByUsername(username);
+        System.out.println(currentUser.isDark());
+        currentUser.setDark(!currentUser.isDark());
+        System.out.println(currentUser.isDark());
+        userService.update(currentUser);
+        return "redirect:/home";
+    }
+
     }

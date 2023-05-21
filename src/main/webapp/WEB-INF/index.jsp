@@ -4,7 +4,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ page isErrorPage="true" %>
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
 <head>
     <c:if test="${currentUser.dark}">
 
@@ -131,7 +131,11 @@
                 <h3 class="d-flex align-items-center ">New Releases <i class="fa-regular fa-chevron-right"></i></h3>
                 <div class="row w-100 justify-content-evenly">
                     <c:forEach var="movie" items="${movies}">
-                        <a href="/movie/${movie.id}" class="ratio-16x9 m-3 bg-dark"  style="width: 30vh; background-size: cover; text-decoration: none;" onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)"  >
+                        <a href="/movie/${movie.id}" class="ratio-16x9 m-3
+                        <c:if test="${currentUser.dark}">
+                       bg-dark text-white
+                        </c:if>
+"  style="width: 30vh; background-size: cover; text-decoration: none;" onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)"  >
                                 <img class="rounded img-fluid" src="https://www.themoviedb.org/t/p/w355_and_h200_bestv2${movie.poster}">
                             <p class="text- mt-2 h6" id="title" >${movie.title}</p>
                             <p class="text-muted" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${movie.overview}</p>

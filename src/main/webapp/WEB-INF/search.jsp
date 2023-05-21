@@ -147,10 +147,7 @@
             console.log(query);
             $.ajax({
 
-                url: "https://6eaf-45-117-5-148.ngrok-free.app/api/v1/movies/findByTitle/"+query,
-
                 url: "https://5169-45-117-5-148.ngrok-free.app/api/v1/movies/findByTitle/"+query,
-
                 method: "GET",
                 success: function(data) {
                     var resultBox = $("#result-box");
@@ -162,16 +159,16 @@
                         var movieId = movie["id"].toString();
                         var movieTitle = movie["title"].toString();
                         var moviePoster = movie["poster"].toString();
+                        var movieOverview = movie["overview"].toString();
                         console.log(movieTitle);
                         var movieCard =
-                            '<a href="/movie/'+
-                            movieId+
-                            '" class="card   ratio-16x9  movie-card  m-3  "  style="width: 30vh; background-image: url('+"https://www.themoviedb.org/t/p/w355_and_h200_bestv2"+
-                            moviePoster +
-                            `); background-size: cover;"onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)">`  +
-                            `<p class="text-center mt-4 h2  invisible" id="title" >`+
-                            movieTitle +
-                            `</p>       </a>`;
+                            `<a href="/movie/`+ movieId +`" class="ratio-16x9 m-3"  style="width: 30vh; background-size:cover; text-decoraton: none;" onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this,1)"  >
+                                    <img class="rounded img-fluid" src="https://www.themoviedb.org/t/p/w355_and_h200_bestv2`+ moviePoster +`">
+                                            <p class="mt-2 h6" id="title" >`+ movieTitle +`</p>
+                                            <p class="text-muted" style="text-overflow:
+                                            ellipsis; overflow: hidden; white-space: nowrap; text-decoration: none">`+ movieOverview +`</p>
+                            </a>`;
+
                         resultBox.append(movieCard);
                     }
                 },

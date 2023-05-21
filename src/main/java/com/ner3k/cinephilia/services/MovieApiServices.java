@@ -21,7 +21,6 @@ public class MovieApiServices {
         for(Movie movie : movies){
             movie.setTmdbId(null);
             movie.setLanguage(null);
-            movie.setOverview(null);
             movie.setActors(null);
             movie.setReleaseDate(null);
             movie.setDirector(null);

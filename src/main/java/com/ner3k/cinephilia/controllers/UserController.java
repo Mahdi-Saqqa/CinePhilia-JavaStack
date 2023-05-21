@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.security.Principal;
 import java.util.Objects;
 import java.util.Random;
-import org.eclipse.tags.shaded.org.apache.xpath.operations.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.apache.tomcat.util.json.ParseException;
@@ -156,7 +155,7 @@ public class UserController {
             User currentUser = userService.findByUsername(username);
             model.addAttribute("currentUser", currentUser);
         }
-        return "profile.jsp";
+        return "editmovie.jsp";
     }
     @GetMapping("/aboutus")
     public String viewAbout(Principal principal,Model model) {
@@ -309,6 +308,41 @@ public class UserController {
         System.out.println(currentUser.isDark());
         userService.update(currentUser);
         return "redirect:/home";
+    }
+
+    @GetMapping("/admin/deletemovie/{id}")
+    public String adminDeleteMovie(@PathVariable("id") Long id) throws ParseException {
+        Movie movie = movieService.getMovieById(id);
+        movieService.deleteMovie(movie);
+        return "redirect:/home";
+    }
+
+
+
+    @GetMapping("/admin/editmovie/{id}")
+    public String adminEditMovie(@PathVariable("id") Long id,Model model,Principal principal) throws ParseException {
+        if (principal != null){
+            String username = principal.getName();
+            User currentUser = userService.findByUsername(username);
+            model.addAttribute("currentUser", currentUser);
+        }
+        Movie movie = movieService.getMovieById(id);
+        model.addAttribute("movie", movie);
+        return "editmovie.jsp";
+    }
+    @PostMapping("/admin/editmovie/{id}")
+    public String adminEditMovie(@PathVariable("id") Long id,
+                                 Model model,
+                                 @RequestParam(value = "title")String title,
+                                 @RequestParam(value = "adult")String isadult,
+                                 @RequestParam(value = "overview")String overview) throws ParseException {
+        Movie movie = movieService.getMovieById(id);
+            movie.setTitle(title);
+            movie.setOverview(overview);
+            movie.setAdult(Objects.equals(isadult, "true"));
+            movieService.updateMovie(movie);
+
+        return "redirect:/movie/"+id;
     }
 
     }

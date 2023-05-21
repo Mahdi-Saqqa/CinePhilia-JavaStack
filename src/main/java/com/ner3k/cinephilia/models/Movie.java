@@ -28,6 +28,14 @@ public class Movie {
 
     private boolean isAdult;
 
+    public boolean isAdult() {
+        return isAdult;
+    }
+
+    public void setAdult(boolean isAdult) {
+        this.isAdult = isAdult;
+    }
+
     private String overview;
 
     private String actors;

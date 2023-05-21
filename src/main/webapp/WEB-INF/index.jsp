@@ -1,11 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- c:out ; c:forEach etc. -->
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<!-- Formatting (dates) -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
-<!-- form:form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!-- for rendering errors on PUT routes -->
 <%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
@@ -33,7 +29,7 @@
     <title>CinePhilia</title>
     <link rel="icon" type="image/x-icon" href="/img/favicon.png">
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/index.css"> <!-- change to match your file/naming structure -->
+    <link rel="stylesheet" href="/css/index.css">
 
 </head>
 <body
@@ -132,7 +128,7 @@
 <%--             <div >--%>
                  <hr class="mt-5">
 <%--             </div>--%>
-                <h3 class="d-flex align-items-center ">New Releases <i class="bi bi-caret-right-fill"></i> </h3>
+                <h3 class="d-flex align-items-center ">New Releases <i class="fa-regular fa-chevron-right"></i></h3>
                 <div class="row w-100 justify-content-evenly">
                     <c:forEach var="movie" items="${movies}">
                         <a href="/movie/${movie.id}" class="ratio-16x9 m-3 bg-dark"  style="width: 30vh; background-size: cover; text-decoration: none;" onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)"  >
@@ -154,6 +150,7 @@
         window.location.href = "/movie/"+id;
     }
 </script>
+
 <script src="/js/index.js" ></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

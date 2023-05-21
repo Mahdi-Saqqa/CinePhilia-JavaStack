@@ -23,10 +23,10 @@ public class UserValidator implements Validator {
     public void validate(Object object, Errors errors) {
         User user = (User) object;
 
-        if (!user.getConfirmPassword().equals(user.getPassword())) {
-            // 3
-            errors.rejectValue("passwordConfirmation", "Match");
-        }
+//        if (!user.getConfirmPassword().equals(user.getPassword())) {
+//            // 3
+//            errors.rejectValue("passwordConfirmation", "Match");
+//        }
         if(userRepository.existsByEmail(user.getEmail())){
             errors.rejectValue("email", "Match");
         }

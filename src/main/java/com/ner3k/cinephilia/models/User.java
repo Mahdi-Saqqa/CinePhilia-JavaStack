@@ -74,6 +74,14 @@ public class User {
         return movieIds;
     }
 
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
+
     @Column(updatable = false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate createdAt;

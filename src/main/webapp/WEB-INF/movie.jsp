@@ -174,7 +174,7 @@
                                 </c:forEach>
                             </p>
                             <div class="page">
-                                <p><a href="#media-popup" data-media="//www.youtube.com/embed/YoXa2Pl7Hk0" class="btn btn-warning fw-bold">Watch Trailer</a></p>
+                                <p><a href="#media-popup" data-media="//www.youtube.com/embed/${movie.trailer}" class="btn btn-outline-warning fw-bold">Watch Trailer</a></p>
 
                                 <div class="popup" id="media-popup">
                                     <iframe width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
@@ -201,18 +201,19 @@
                             </form>
                                 <c:forEach var="role" items="${currentUser.roles}">
                                     <c:if test="${role.name == 'ROLE_ADMIN'}">
-                                        <a href="/deletereview/${movie.id}" class="text-muted"><i class="bi bi-trash3                         <c:if test="${currentUser.dark}">
+                                        <a href="/admin/deletemovie/${movie.id}" class="text-muted"><i class="bi bi-trash3                         <c:if test="${currentUser.dark}">
                                                     text-white
                                     </c:if>"></i>
                                         </a>
-                                        <a href="/editreview/${movie.id}" class="text-muted"><i class="bi bi-pen                         <c:if test="${currentUser.dark}">
+                                        <a href="/admin/editmovie/${movie.id}" class="text-muted"><i class="bi bi-pen                         <c:if test="${currentUser.dark}">
 text-white
                         </c:if>"></i></a>
 
                                     </c:if>
                                 </c:forEach>
                             <p>${errorMessage}</p>
-                            <button class="btn btn-primary my-3" onclick="createReviewBox(this)">Add Review</button>
+                            <a class="btn btn-outline-success my-3" href="/user/watchlater/${movie.id}">Watch Later</a>
+                            <button class="btn btn-outline-primary my-3" onclick="createReviewBox(this)">Add Review</button>
                             <form action="/movie/${movie.id}/addreview" method="post" id="reviewBoxContainer">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                

@@ -6,10 +6,7 @@ import com.ner3k.cinephilia.repositories.GenreRepository;
 import com.ner3k.cinephilia.repositories.MovieRepository;
 import com.ner3k.cinephilia.repositories.RateRepository;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 import com.ner3k.cinephilia.repositories.ReviewRepository;
 import okhttp3.OkHttpClient;
@@ -176,5 +173,20 @@ public class MovieService {
     public void updateReview(Review review1, String review) {
         review1.setReview(review);
         reviewRepository.save(review1);
+    }
+
+    public Movie getMovieById(Long id) {
+        if(movieRepository.findById(id).isPresent()) {
+            return movieRepository.findById(id).get();
+        }
+        else return null;
+    }
+
+    public void deleteMovie(Movie movie) {
+        movieRepository.delete(movie);
+    }
+
+    public void updateMovie(Movie movie) {
+        movieRepository.save(movie);
     }
 }

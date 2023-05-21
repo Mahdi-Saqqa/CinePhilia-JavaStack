@@ -26,6 +26,7 @@ centralized platform with a wide range of features.
 
 ## Relationships
 Many To Many Realationships
+
 1- User & Movie  
 
 2- Movie & Review

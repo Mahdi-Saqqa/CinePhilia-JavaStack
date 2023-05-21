@@ -1,5 +1,5 @@
 function cardHoverIn(element) {
-    element.style.transform = "scale(" + 1.1 + ")";
+    element.style.transform = "scale(" + 1.05+ ")";
     let title = element.querySelector("#title");
     // title.classList.remove("invisible");
 }

@@ -130,8 +130,9 @@
                 </div>
                 <div class="row  mt-5 w-100 justify-content-evenly">
                     <c:forEach var="movie" items="${movies}">
-                        <a href="/movie/${movie.id}" class="card   ratio-16x9  movie-card  m-3  "  style="width: 30vh; background-image: url('https://www.themoviedb.org/t/p/w355_and_h200_bestv2${movie.poster}'); background-size: cover;" onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)"  >
-                                <p class="text-center mt-4 h2  invisible" id="title" >${movie.title}</p>
+                        <a href="/movie/${movie.id}" class=" ratio-16x9 m-3 bg-dark"  style="width: 30vh; url(); background-size: cover;" onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)"  >
+                                <img src="https://www.themoviedb.org/t/p/w355_and_h200_bestv2${movie.poster}">
+                            <p class="text- mt-2 h6" id="title" >${movie.title}</p>
                         </a>
                     </c:forEach>
                 </div>

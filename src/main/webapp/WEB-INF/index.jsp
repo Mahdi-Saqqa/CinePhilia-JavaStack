@@ -122,17 +122,17 @@
         <div class="col col-sm-9 col-xl-11 px-sm-10 px-12 sticky-top ">
             <main class="row overflow-auto canvas">
                 <div class="kodfun-galeri">
-                    <div style="height:60vh; background-image: url('/img/BohemianRhapsody.jpeg');"></div>
-                    <div style="height:60vh; background-image: url('/img/house-of-gucci-lady-gaga.jpg');"></div>
-                    <div style="height:60vh; background-image: url('/img/riddle.jpg');"></div>
-                    <div style="height:60vh; background-image: url('/img/theForest.jpg');"></div>
-                    <div style="height:60vh; background-image: url('/img/oculus.jpg');"></div>
-                    <div style="height:60vh; background-image: url('/img/moonlight.jpg');"></div>
+                    <div onclick="redirect(37)" style="height:60vh; background-image: url('/img/BohemianRhapsody.jpeg');"></div>
+                    <div onclick="redirect(36)"  style="height:60vh; background-image: url('/img/house-of-gucci-lady-gaga.jpg');"></div>
+                    <div onclick="redirect(38)"  style="height:60vh; background-image: url('/img/riddle.jpg');"></div>
+                    <div onclick="redirect(39)"  style="height:60vh; background-image: url('/img/theForest.jpg');"></div>
+                    <div onclick="redirect(40)"  style="height:60vh; background-image: url('/img/oculus.jpg');"></div>
+                    <div onclick="redirect(41)"  style="height:60vh; background-image: url('/img/moonlight.jpg');"></div>
                 </div>
 <%--             <div >--%>
                  <hr class="mt-5">
 <%--             </div>--%>
-                <h3 class="text-align-center">New Releases <i class="bi bi-caret-right"></i> </h3>
+                <h3 class="d-flex align-items-center ">New Releases <i class="bi bi-caret-right-fill"></i> </h3>
                 <div class="row w-100 justify-content-evenly">
                     <c:forEach var="movie" items="${movies}">
                         <a href="/movie/${movie.id}" class="ratio-16x9 m-3 bg-dark"  style="width: 30vh; background-size: cover; text-decoration: none;" onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)"  >
@@ -149,6 +149,11 @@
         </div>
     </div>
 </div>
+<script>
+    function redirect(id){
+        window.location.href = "/movie/"+id;
+    }
+</script>
 <script src="/js/index.js" ></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

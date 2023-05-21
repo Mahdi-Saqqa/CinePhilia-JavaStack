@@ -173,4 +173,8 @@ public class MovieService {
     }
 
 
+    public void updateReview(Review review1, String review) {
+        review1.setReview(review);
+        reviewRepository.save(review1);
+    }
 }

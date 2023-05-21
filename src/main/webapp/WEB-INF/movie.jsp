@@ -201,6 +201,10 @@
                             </form>
                                 <c:forEach var="role" items="${currentUser.roles}">
                                     <c:if test="${role.name == 'ROLE_ADMIN'}">
+
+                                        <a href="/deletereview/${movie.id}" class="text-muted"><i class="bi bi-trash3 text-white-50"></i></a>
+                                        <a href="/editreview/${movie.id}" class="text-muted"><i class="bi bi-pen text-white-50"></i></a>
+
                                         <a href="/deletereview/${movie.id}" class="text-muted"><i class="bi bi-trash3                         <c:if test="${currentUser.dark}">
                                                     text-white
                                     </c:if>"></i>
@@ -208,6 +212,7 @@
                                         <a href="/editreview/${movie.id}" class="text-muted"><i class="bi bi-pen                         <c:if test="${currentUser.dark}">
 text-white
                         </c:if>"></i></a>
+
 
                                     </c:if>
                                 </c:forEach>

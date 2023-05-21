@@ -297,6 +297,7 @@ public class UserController {
         }
         return "redirect:/movie/"+review1.getMovie().getId();
     }
+
     @GetMapping("/switchmode")
     public String switchMode(Principal principal) throws ParseException {
         String username = principal.getName();
@@ -309,4 +310,5 @@ public class UserController {
         userService.update(currentUser);
         return "redirect:/home";
     }
+
     }

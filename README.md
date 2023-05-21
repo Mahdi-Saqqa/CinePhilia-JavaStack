@@ -46,7 +46,7 @@ Control Access for website page using Spring Security.
 
 Login & Logout validation
 
-
+<img src="https://github.com/Mahdi-Saqqa/CinePhilia/assets/126386351/8b1a4a1d-81e3-4c6a-bf05-1c4b9d3e0624.png" >
 
 ### Website pages
 

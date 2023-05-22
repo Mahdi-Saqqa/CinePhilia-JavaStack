@@ -32,6 +32,10 @@ The development of CinePhilia was a collaborative effort by the following team m
  
  Khalid Hassouneh https://github.com/KhalidHassouna
 
+
+ ## Project Lead
+ 
+ Fatima Harahsheh
  
  
 ## ERD Diagram

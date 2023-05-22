@@ -16,10 +16,13 @@ Welcome to CinePhilia, the ultimate movie app! CinePhilia is an online movie dat
 
 ## Team Members
 
-Mahdi Saqqa: GitHub
-Taleen Khoury: GitHub
-Shatha Morales: GitHub
-Khalid Hassouneh: GitHub
+ Mahdi Saqqa https://github.com/Mahdi-Saqqa
+ 
+ Taleen Khoury https://github.com/TaleenMusa
+ 
+ Shatha Morales https://github.com/ShathaMorales
+ 
+ Khalid Hassouneh https://github.com/KhalidHassouna
  
 Our team utilized modern technologies and frameworks to bring CinePhilia to life. We leveraged Spring Security for user authentication and secure access. 
 The integration with the TMDB API provided a rich source of movie data. We focused on building a Responsive web design using HTML, CSS, and JavaScript frameworks such as Bootstrap.

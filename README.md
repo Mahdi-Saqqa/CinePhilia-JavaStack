@@ -1,6 +1,6 @@
 # Cinephilia
 
-Welcome to CinePhilia, the ultimate movie app! CinePhilia is an online movie database that allows users to explore captivating films, check ratings, and share their own reviews. It aims to address the challenges users face in finding diverse film recommendations and accessing reliable movie data.
+Welcome to CinePhilia, The Ultimate Movie App! CinePhilia is an online movie database that allows users to explore captivating films, check ratings, and share their own reviews. It aims to address the challenges users face in finding diverse film recommendations and accessing reliable movie data.
 
 ## Key Features
 • User Authentication: CinePhilia ensures secure access and user authentication through a robust system. Users can create accounts, log in securely, and enjoy personalized features.

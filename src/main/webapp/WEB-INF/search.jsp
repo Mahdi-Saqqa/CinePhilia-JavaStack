@@ -177,7 +177,7 @@
             console.log(query);
             $.ajax({
 
-                url: "https://5169-45-117-5-148.ngrok-free.app/api/v1/movies/findByTitle/"+query,
+                url: "https://9ca9-45-117-5-148.ngrok-free.app/api/v1/movies/findByTitle/"+query,
                 method: "GET",
                 success: function(data) {
                     var resultBox = $("#result-box");

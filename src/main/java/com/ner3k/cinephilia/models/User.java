@@ -49,6 +49,7 @@ public class User {
     private LocalDate dob;
 
 
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "users_roles",

@@ -221,11 +221,12 @@
                                     </c:if>
                                 </c:forEach>
                             <p>${errorMessage}</p>
-                            <a class="btn btn-outline-success my-3" href="/user/watchlater/${movie.id}">Watch Later</a>
-                            <button class="btn btn-outline-primary my-3" onclick="createReviewBox(this)">Add Review</button>
+                                <c:if test="${currentUser != null}" >
+                                    <a class="btn btn-outline-success my-3" href="/user/watchlater/${movie.id}">Watch Later</a>
+                                    <button class="btn btn-outline-primary my-3" onclick="createReviewBox(this)">Add Review</button>
+                                </c:if>
                             <form action="/movie/${movie.id}/addreview" method="post" id="reviewBoxContainer">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                               
                             </form>
 
                             <c:forEach var="review" items="${movie.reviews}">

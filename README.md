@@ -86,6 +86,7 @@ Login & Logout Validation
 ## Technologies Used:
 
 CinePhilia was developed using the following technologies:
+
 •	Java
 
 •	IntelliJ IDEA

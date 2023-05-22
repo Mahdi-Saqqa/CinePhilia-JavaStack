@@ -111,4 +111,5 @@ CinePhilia was developed using the following technologies:
 
 These technologies were utilized to create a robust and user-friendly movie app, ensuring seamless functionality, responsive design, and secure data management.
 
+## Summary
 CinePhilia aims to revolutionize the way movie enthusiasts interact with films and engage with a community of like-minded individuals. By offering an immersive movie-watching experience, comprehensive information, and a platform for sharing reviews, CinePhilia strives to become the go-to app for all movie lovers.

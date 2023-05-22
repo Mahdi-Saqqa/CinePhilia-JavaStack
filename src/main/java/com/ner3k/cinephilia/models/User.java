@@ -57,6 +57,14 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private List<Role> roles;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "users_wishes",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "movie_id"))
+    private List<Movie> wishes;
+
+
     @OneToMany(mappedBy="user", fetch=FetchType.LAZY)
     private List<Review> reviews;
 

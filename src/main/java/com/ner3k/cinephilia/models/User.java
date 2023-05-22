@@ -4,6 +4,7 @@ package com.ner3k.cinephilia.models;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 import lombok.*;
@@ -48,7 +49,11 @@ public class User {
     @ValidAge(minimumAge = 12, message = "You must be at least 12 years old")
     private LocalDate dob;
 
-
+    public boolean isAdult() {
+        LocalDate currentDate = LocalDate.now();
+        Period period = Period.between(dob, currentDate);
+        return period.getYears() >= 18;
+    }
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

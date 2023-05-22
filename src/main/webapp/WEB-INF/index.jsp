@@ -156,7 +156,7 @@
 <%--             <div >--%>
                  <hr class="mt-5">
 <%--             </div>--%>
-                <h3 class="d-flex align-items-center ">New Releases <i class="fa-regular fa-chevron-right"></i></h3>
+                <h3 class="d-flex align-items-center ">New Releases <i class="bi bi-caret-right"></i></h3>
                 <div class="row w-100 justify-content-evenly">
                     <c:forEach var="movie" items="${movies}">
                         <a href="/movie/${movie.id}" class="ratio-16x9 m-3

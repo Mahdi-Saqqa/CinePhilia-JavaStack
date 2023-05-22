@@ -78,13 +78,23 @@ public class UserController {
     @RequestMapping(value = {"/", "/home", "/main"})
     public String home(Principal principal, Model model) {
         System.out.println(principal);
-        if (principal != null){
+        if (principal != null) {
             String username = principal.getName();
             User currentUser = userService.findByUsername(username);
             model.addAttribute("currentUser", currentUser);
+            if (currentUser.isAdult()) {
+                model.addAttribute("movies", movieService.getAllMovies());
+                return "index.jsp";
+
+            } else {
+                model.addAttribute("movies", movieService.filter(movieService.getAllMovies()));
+                return "index.jsp";
+
+            }
         }
-        model.addAttribute("movies",movieService.getAllMovies());
+        model.addAttribute("movies", movieService.filter(movieService.getAllMovies()));
         return "index.jsp";
+
     }
 
     @GetMapping("/admin/newmovie")
@@ -110,7 +120,6 @@ public class UserController {
 
     @GetMapping("/search")
     public String searchMovie(Model model, HttpSession session,Principal principal) throws ParseException, ParseException, IOException {
-        model.addAttribute("movies",movieService.getAllMovies());
         System.out.println(principal);
         if (principal != null){
             String username = principal.getName();
@@ -234,25 +243,37 @@ public class UserController {
 
     @GetMapping("/genre/{id}")
     public String viewGenre(@PathVariable("id") Long id, Model model,Principal principal) throws ParseException {
+        model.addAttribute("genre",movieService.getGenreByID(id));
+        List<Movie> allMovie = movieService.getMoviesByGenre(id);
+
         System.out.println(principal);
         if (principal != null){
             String username = principal.getName();
             User currentUser = userService.findByUsername(username);
             model.addAttribute("currentUser", currentUser);
+            if(currentUser.isAdult()) {
+                model.addAttribute("movies",allMovie);
+                return "genre.jsp";
+            }
         }
-        model.addAttribute("genre",movieService.getGenreByID(id));
-        model.addAttribute("movies",movieService.getMoviesByGenre(id));
+        model.addAttribute("movies",movieService.filter(allMovie));
         return "genre.jsp";
     }
     @GetMapping("/discover")
     public String discover( Model model,Principal principal) throws ParseException {
         System.out.println(principal);
+        List<Movie> allMovie =movieService.getRandomMovies();
         if (principal != null) {
             String username = principal.getName();
             User currentUser = userService.findByUsername(username);
             model.addAttribute("currentUser", currentUser);
+            if (currentUser.isAdult()) {
+                model.addAttribute("movies",allMovie);
+                return "discover.jsp";
+            }
         }
-        model.addAttribute("movies", movieService.getRandomMovies());
+
+        model.addAttribute("movies",movieService.filter(allMovie));
         return "discover.jsp";
     }
     @PostMapping("/movie/{id}/addreview")

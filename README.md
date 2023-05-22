@@ -3,15 +3,20 @@
 Welcome to CinePhilia, The Ultimate Movie App! CinePhilia is an online movie database that allows users to explore captivating films, check ratings, and share their own reviews. It aims to address the challenges users face in finding diverse film recommendations and accessing reliable movie data.
 
 ## Key Features
-• User Authentication: CinePhilia ensures secure access and user authentication through a robust system. Users can create accounts, log in securely, and enjoy personalized features.
+• User Authentication: 
+CinePhilia ensures secure access and user authentication through a robust system. Users can create accounts, log in securely, and enjoy personalized features.
 
-• CRUD Operations: Users can perform Create, Read, Update, and Delete operations on specific entities within the system. They can view existing data, write reviews, rate movies, update their reviews, and delete their own reviews. Admins have additional privileges.
+• CRUD Operations: 
+Users can perform Create, Read, Update, and Delete operations on specific entities within the system. They can view existing data, write reviews, rate movies, update their reviews, and delete their own reviews. Admins have additional privileges.
 
-• Integration with TMDB API: CinePhilia seamlessly integrates with the TMDB (The Movie Database) API, providing users with comprehensive and up-to-date movie information, including posters, overviews, ratings, genres, and cast information.
+• Integration with TMDB API: 
+CinePhilia seamlessly integrates with the TMDB (The Movie Database) API, providing users with comprehensive and up-to-date movie information, including posters, overviews, ratings, genres, and cast information.
 
-• Responsive Design: CinePhilia is designed with a responsive user interface that adapts to different screen sizes, ensuring a consistent and optimized experience across desktops, tablets, and mobile devices.
+• Responsive Design: 
+CinePhilia is designed with a responsive user interface that adapts to different screen sizes, ensuring a consistent and optimized experience across desktops, tablets, and mobile devices.
 
-• Secure Access: CinePhilia leverages Spring Security to ensure secure user authentication and access, safeguarding user data and protecting against unauthorized access.
+• Secure Access: 
+CinePhilia leverages Spring Security to ensure secure user authentication and access, safeguarding user data and protecting against unauthorized access.
 
 
 ## Collaborators

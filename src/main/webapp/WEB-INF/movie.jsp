@@ -248,7 +248,7 @@
                             <p>${errorMessage}</p>
                                 <c:if test="${currentUser != null}" >
                                     <c:if test="${wished}">
-                                        <a class="btn btn-outline-danger my-3" href="/user/watchlater/${movie.id}/delete">remove watch later</a>
+                                        <a class="btn btn-outline-danger my-3" href="/user/watchlater/${movie.id}/delete">Remove from Wishlist</a>
                                     </c:if>
                                     <c:if test="${!wished}">
                                         <a class="btn btn-outline-success my-3" href="/user/watchlater/${movie.id}">Watch Later</a>

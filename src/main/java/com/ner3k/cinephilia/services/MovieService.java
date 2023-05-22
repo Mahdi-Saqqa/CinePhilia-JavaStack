@@ -134,7 +134,7 @@ public class MovieService {
     }
     public List<Movie> getAllMovies() {
 
-        return movieRepository.findAll();
+        return movieRepository.findAllByOrderByIdDesc();
     }
     public  Movie getMovie(Long id) {
 
@@ -193,5 +193,10 @@ public class MovieService {
 
     public void updateMovie(Movie movie) {
         movieRepository.save(movie);
+    }
+
+    public List<Movie> filter(List<Movie> allMovies) {
+        allMovies.removeIf(Movie::isAdult);
+        return allMovies;
     }
 }

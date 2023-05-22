@@ -1,14 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<!-- c:out ; c:forEach etc. -->
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
-<!-- Formatting (dates) -->
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"  %>
-<!-- form:form -->
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!-- for rendering errors on PUT routes -->
 <%@ page isErrorPage="true" %>
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
 <head>
     <c:if test="${currentUser.dark}">
 
@@ -18,7 +14,7 @@
             }
         </style>
     </c:if>
-    <c:if test="${currentUser.dark==null || !currentUser.dark}">
+    <c:if test="${!currentUser.dark}">
 
         <style>
             a{
@@ -31,7 +27,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <title>CinePhilia</title>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/index.css">
     <style>
         .page {
             position: relative;
@@ -63,7 +61,6 @@
             margin-left:-280px;
         }
     </style>
-    <link rel="stylesheet" href="/css/index.css"> <!-- change to match your file/naming structure -->
 
 </head>
 <body
@@ -98,8 +95,38 @@
                             <i class="bi bi-shuffle"></i><span class="ms-1 d-none d-sm-inline">Discover</span></a>
                     </li>
                     <li>
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle px-sm-0 px-2 py-4">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Genre</span> </a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="/genre/11" class="nav-link px-0"> <span class="d-none d-sm-inline">Action</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/12" class="nav-link px-0"> <span class="d-none d-sm-inline">Adventure</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/13" class="nav-link px-0"> <span class="d-none d-sm-inline">History</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/14" class="nav-link px-0"> <span class="d-none d-sm-inline">Drama</span></a>
+                            </li>
+                            <li>
+                                <a href="genre/15" class="nav-link px-0"> <span class="d-none d-sm-inline">War</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/18" class="nav-link px-0"> <span class="d-none d-sm-inline">Comedy</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/22" class="nav-link px-0"> <span class="d-none d-sm-inline">Horror</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/19" class="nav-link px-0"> <span class="d-none d-sm-inline">Crime</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="/wishlist" class="nav-link px-sm-0 px-2 py-4">
-                            <i class="fs-5 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Wishlist</span></a>
+                            <i class="bi bi-heart"></i><span class="ms-1 d-none d-sm-inline">Wishlist</span></a>
                     </li>
                     <li>
                         <a href="/aboutus" class="nav-link px-sm-0 px-2 py-4">
@@ -124,9 +151,7 @@
                                     <li><a class="dropdown-item" href="/admin/newmovie">Add Movie</a></li>
                                 </c:if>
                                 <c:if test="${role.name == 'ROLE_USER'}">
-                                    <li><a class="dropdown-item" href="/settings">Settings</a></li>
-
-                                    <li><a class="dropdown-item" href="/profile">Profile</a></li>
+                                    <li><a class="dropdown-item" href="/switchmode">Switch Mode</a></li>
                                 </c:if>
 
                             </c:forEach>
@@ -149,7 +174,7 @@
                 </div>
             </div>
         </div>
-        <div class="col col-sm-9 col-xl-11 px-sm-10 px-12 ">
+        <div class="col col-sm-9 col-xl-11 px-sm-10 px-12 sticky-top ">
             <main class="row overflow-auto canvas">
 
 

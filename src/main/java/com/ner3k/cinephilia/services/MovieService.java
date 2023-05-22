@@ -159,12 +159,17 @@ public class MovieService {
     public List<Movie> getRandomMovies() {
         List<Movie> randMovies = new ArrayList<Movie>();
 
-        for(int i = 0; i <10;i++){
+        for(int i = 0; i <20;i++){
             List<Movie> movies = movieRepository.findAll();
             Random random = new Random();
             int randomIndex = random.nextInt(movies.size());
             Movie movie = movies.get(randomIndex);
-            randMovies.add(movie);
+            if (movie != null){
+                randMovies.add(movie);
+            }
+            else {
+                i--;
+            }
         }
         return randMovies;
     }

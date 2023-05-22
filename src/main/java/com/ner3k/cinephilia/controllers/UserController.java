@@ -252,9 +252,8 @@ public class UserController {
             User currentUser = userService.findByUsername(username);
             model.addAttribute("currentUser", currentUser);
         }
-        model.addAttribute("genre", "Discover");
         model.addAttribute("movies", movieService.getRandomMovies());
-        return "genre.jsp";
+        return "discover.jsp";
     }
     @PostMapping("/movie/{id}/addreview")
     public  String addReview(Principal principal, @PathVariable("id") Long id, @RequestParam(value = "review")String review) throws ParseException{
@@ -378,4 +377,5 @@ public class UserController {
         model.addAttribute("movies", movies);
         return "wishlist.jsp";
     }
+
     }

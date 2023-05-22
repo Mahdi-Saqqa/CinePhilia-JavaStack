@@ -64,8 +64,38 @@
                             <i class="bi bi-shuffle"></i><span class="ms-1 d-none d-sm-inline">Discover</span></a>
                     </li>
                     <li>
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle px-sm-0 px-2 py-4">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Genre</span> </a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="/genre/11" class="nav-link px-0"> <span class="d-none d-sm-inline">Action</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/12" class="nav-link px-0"> <span class="d-none d-sm-inline">Adventure</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/13" class="nav-link px-0"> <span class="d-none d-sm-inline">History</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/14" class="nav-link px-0"> <span class="d-none d-sm-inline">Drama</span></a>
+                            </li>
+                            <li>
+                                <a href="genre/15" class="nav-link px-0"> <span class="d-none d-sm-inline">War</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/18" class="nav-link px-0"> <span class="d-none d-sm-inline">Comedy</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/22" class="nav-link px-0"> <span class="d-none d-sm-inline">Horror</span></a>
+                            </li>
+                            <li>
+                                <a href="/genre/19" class="nav-link px-0"> <span class="d-none d-sm-inline">Crime</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="/wishlist" class="nav-link px-sm-0 px-2 py-4">
-                            <i class="fs-5 bi-grid"></i><span class="ms-1 d-none d-sm-inline">Wishlist</span></a>
+                            <i class="bi bi-heart"></i><span class="ms-1 d-none d-sm-inline">Wishlist</span></a>
                     </li>
                     <li>
                         <a href="/aboutus" class="nav-link px-sm-0 px-2 py-4">

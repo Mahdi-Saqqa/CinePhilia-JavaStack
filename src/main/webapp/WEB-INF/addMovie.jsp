@@ -190,17 +190,27 @@
                         var movieCard =
                             '<a href="/movie/'+
                             movieId+
-                            '" class="card   ratio-16x9  movie-card  m-3  "  style="width: 30vh; background-image: url('+"https://www.themoviedb.org/t/p/w355_and_h200_bestv2"+
+                            '" class="card   ratio-16x9  movie-card  m-3 w-25  "  style=" background-image: url('+"https://www.themoviedb.org/t/p/w355_and_h200_bestv2"+
                             moviePoster +
                             `); background-size: cover;"onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)">`  +
-                            `<p class="text-center mt-4 h2 text-secondary " id="title" >`+
+                            `<p class="text-center mt-4 h2 text-light " id="title" >`+
                             movieTitle +
                             `</p>       </a>`;
 
                         var addButton = document.createElement("form");
                         addButton.setAttribute("action","/admin/newmovie");
                         addButton.setAttribute("method","POST");
-                        addButton.innerHTML=`<input class="btn btn-light"  type="submit" name="movieId" value="`+ movieId +`"/>                                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        addButton.innerHTML=`
+<div class="w-25 mx-auto">
+                                             <select class="form-select bg-dark text-light" aria-label="Default select example" name="isAdult">
+                                                  <option selected>Is Adult</option>
+                                                  <option value="0">false</option>
+                                                  <option value="1">true</option>
+                                             </select>
+                                             <input type="hidden" name="movieId" value="`+ movieId +`"/>
+                                             <input class="btn w-25 mx-auto my-2 btn-success"  type="submit">
+                                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+</div>
 `
 
                         resultBox.append(movieCard);

@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 import java.util.Objects;
 import java.util.Random;
 import org.slf4j.Logger;
@@ -139,6 +140,12 @@ public class UserController {
                          loggedUserRate= r.getRate();
                     }
                 }
+            }
+            if (currentUser.getWishes().contains(movie)){
+                model.addAttribute("wished",true);
+            }
+            else {
+                model.addAttribute("wished",false);
             }
             model.addAttribute("loggedUserRate", loggedUserRate);
             model.addAttribute("currentUser", currentUser);
@@ -344,6 +351,31 @@ public class UserController {
 
         return "redirect:/movie/"+id;
     }
-
-
+    @GetMapping("/user/watchlater/{id}")
+    public String addWatchlater(@PathVariable("id") Long id,Principal principal) throws ParseException {
+        String username = principal.getName();
+        Movie movie = movieService.getMovie(id);
+        User currentUser = userService.findByUsername(username);
+        currentUser.getWishes().add(movie);
+        userService.update(currentUser);
+        return "redirect:/movie/"+id;
+    }
+    @GetMapping("/user/watchlater/{id}/delete")
+    public String deleteWatchLater(@PathVariable("id") Long id,Principal principal) throws ParseException {
+        String username = principal.getName();
+        Movie movie = movieService.getMovie(id);
+        User currentUser = userService.findByUsername(username);
+        currentUser.getWishes().remove(movie);
+        userService.update(currentUser);
+        return "redirect:/movie/"+id;
+    }
+    @GetMapping("/wishlist")
+    public String wishlist(Model model,Principal principal) throws ParseException {
+        String username = principal.getName();
+        User currentUser = userService.findByUsername(username);
+        List<Movie> movies = currentUser.getWishes();
+        model.addAttribute("currentUser", currentUser);
+        model.addAttribute("movies", movies);
+        return "wishlist.jsp";
+    }
     }

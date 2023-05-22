@@ -32,6 +32,15 @@ public class Movie {
         return isAdult;
     }
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "users_wishes",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> wishUsers;
+
+
+
     public void setAdult(boolean isAdult) {
         this.isAdult = isAdult;
     }

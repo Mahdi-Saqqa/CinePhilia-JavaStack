@@ -90,8 +90,6 @@
                                         <li><a class="dropdown-item" href="/admin/newmovie">Add Movie</a></li>
                                 </c:if>
                                 <c:if test="${role.name == 'ROLE_USER'}">
-                                    <li><a class="dropdown-item" href="/settings">Settings</a></li>
-
                                     <li><a class="dropdown-item" href="/switchmode">Switch Mode</a></li>
                                 </c:if>
 

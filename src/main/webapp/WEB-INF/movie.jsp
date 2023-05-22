@@ -221,11 +221,17 @@
                                     </c:if>
                                 </c:forEach>
                             <p>${errorMessage}</p>
-                            <a class="btn btn-outline-success my-3" href="/user/watchlater/${movie.id}">Watch Later</a>
-                            <button class="btn btn-outline-primary my-3" onclick="createReviewBox(this)">Add Review</button>
+                                <c:if test="${currentUser != null}" >
+                                    <c:if test="${wished}">
+                                        <a class="btn btn-outline-danger my-3" href="/user/watchlater/${movie.id}/delete">remove watch later</a>
+                                    </c:if>
+                                    <c:if test="${!wished}">
+                                        <a class="btn btn-outline-success my-3" href="/user/watchlater/${movie.id}">Watch Later</a>
+                                    </c:if>
+                                    <button class="btn btn-outline-primary my-3" onclick="createReviewBox(this)">Add Review</button>
+                                </c:if>
                             <form action="/movie/${movie.id}/addreview" method="post" id="reviewBoxContainer">
                                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                               
                             </form>
 
                             <c:forEach var="review" items="${movie.reviews}">
@@ -283,7 +289,14 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
 
+<script type="text/javascript" >
 
+    $(document).ready( function () {
+        const rates=parseInt(${movie.avgRates()});
+
+        setRating(rates)
+    });
+</script>
 <script>
     $("[data-media]").on("click", function(e) {
         e.preventDefault();

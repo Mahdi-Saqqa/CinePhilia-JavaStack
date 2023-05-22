@@ -27,7 +27,7 @@ public class WebSecurityConfig {
 
         http
                 .authorizeHttpRequests()
-                .requestMatchers("/addrate/**","/addreview/**","/deletereview/**").authenticated()
+                .requestMatchers("/addrate/**","/addreview/**","/deletereview/**","/user/**").authenticated()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().permitAll()
                 .and()

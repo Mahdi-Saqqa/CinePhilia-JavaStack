@@ -146,24 +146,26 @@
         <div class="col col-sm-9 col-xl-11 px-sm-10 px-12 sticky-top ">
             <main class="row overflow-auto canvas">
 
-                <div class="col-12 col-sm-12 col-xl-11 px-sm-10 px-12">
-                    <h1>edit : ${movie.title}</h1>
-                    <form:form action="/admin/editmovie/${movie.id}" method="post" modelAttribute="movie">
-                    <p>
-                        <form:label path="title">Title</form:label>
-                        <form:errors path="title"/>
-                        <form:input path="title"/>
-                    </p>
-                    <p>
-                        <form:label path="overview">Overview</form:label>
-                        <form:errors path="overview"/>
-                        <form:textarea path="overview"/>
-                    </p>
-
-                    <input type="submit"  name="adult" value="true"/>
-                        <input type="submit" name="adult" value="false"/>
-
-                    </form:form>
+                <div class="col-12 col-sm-12 col-xl-11 px-sm-10 px-12 m-5">
+                    <div class="row w-25 my-5 mx-auto h-25">
+                        <h1 class="my-5">Update Movie: ${movie.title}</h1>
+                        <form:form action="/admin/editmovie/${movie.id}" method="post" modelAttribute="movie">
+                            <p>
+                                <form:label path="title">Title</form:label>
+                                <form:errors path="title"/>
+                                <form:input class="form-control" path="title"/>
+                            </p>
+                            <p>
+                                <form:label path="overview">Overview</form:label>
+                                <form:errors path="overview"/>
+                                <form:textarea class="form-control" path="overview"/>
+                            </p>
+                            <div class="d-flex justify-content-between">
+                                <input type="submit"  class="btn btn-outline-success my-3" name="adult" value="true"/>
+                                <input type="submit" class="btn btn-outline-danger my-3" name="adult" value="false"/>
+                            </div>
+                        </form:form>
+                    </div>
                 </div>
 
             </main>

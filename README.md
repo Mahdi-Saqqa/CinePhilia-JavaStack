@@ -14,7 +14,7 @@ Welcome to CinePhilia, the ultimate movie app! CinePhilia is an online movie dat
 • Secure Access: CinePhilia leverages Spring Security to ensure secure user authentication and access, safeguarding user data and protecting against unauthorized access.
 
 
-## Team Members
+## Collaborators
 
  Mahdi Saqqa https://github.com/Mahdi-Saqqa
  
@@ -23,9 +23,6 @@ Welcome to CinePhilia, the ultimate movie app! CinePhilia is an online movie dat
  Shatha Morales https://github.com/ShathaMorales
  
  Khalid Hassouneh https://github.com/KhalidHassouna
- 
-Our team utilized modern technologies and frameworks to bring CinePhilia to life. We leveraged Spring Security for user authentication and secure access. 
-The integration with the TMDB API provided a rich source of movie data. We focused on building a Responsive web design using HTML, CSS, and JavaScript frameworks such as Bootstrap.
 
  
 ## ERD Diagram
@@ -76,7 +73,10 @@ Login & Logout validation
 
 6- Discover
 
+
 ## Technologies Used:
+
+CinePhilia was developed using the following technologies:
 •	Java
 
 •	IntelliJ IDEA
@@ -91,5 +91,14 @@ Login & Logout validation
 
 •	MySQL
 
+• Bcrypt
+
+• PostMan
+
+. AJAX
+
+• JQuery
+
+These technologies were utilized to create a robust and user-friendly movie app, ensuring seamless functionality, responsive design, and secure data management.
 
 CinePhilia aims to revolutionize the way movie enthusiasts interact with films and engage with a community of like-minded individuals. By offering an immersive movie-watching experience, comprehensive information, and a platform for sharing reviews, CinePhilia strives to become the go-to app for all movie lovers.

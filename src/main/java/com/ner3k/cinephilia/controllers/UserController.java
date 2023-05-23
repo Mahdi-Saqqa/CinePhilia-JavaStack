@@ -44,6 +44,11 @@ public class UserController {
         return "registration.jsp";
     }
 
+    @RequestMapping("/test")
+    public String test(Model model) {
+
+        return "test.jsp";
+    }
     @RequestMapping("/login")
     public String login(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout, Model model,Principal principal) {
         System.out.println(principal);
@@ -111,15 +116,12 @@ public class UserController {
     }
 
     @PostMapping("/admin/newmovie")
-    public String addMovieAction(@RequestParam("movieId") String movieId,@RequestParam("isAdult") boolean isAdult ,Model model, HttpSession session) throws ParseException, ParseException, IOException {
-
+    public String addMovieAction(@RequestParam("movieId") String movieId,@RequestParam("isAdult") boolean isAdult ) throws  ParseException, IOException {
         Movie movie=  movieService.addMovie(movieId,isAdult);
-
         return "redirect:/movie/"+movie.getId();
     }
-
     @GetMapping("/search")
-    public String searchMovie(Model model, HttpSession session,Principal principal) throws ParseException, ParseException, IOException {
+    public String searchMovie(Model model, HttpSession session,Principal principal) {
         System.out.println(principal);
         if (principal != null){
             String username = principal.getName();

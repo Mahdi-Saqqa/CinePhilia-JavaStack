@@ -176,14 +176,11 @@
             var query = $("#search-box").val();
             console.log(query);
             $.ajax({
-
-                url: "https://9ca9-45-117-5-148.ngrok-free.app/api/v1/movies/findByTitle/"+query,
+                url: "https://9099-45-117-5-148.ngrok-free.app/api/v1/movies/findByTitle/"+query,
                 method: "GET",
                 success: function(data) {
                     var resultBox = $("#result-box");
-                    console.log(data);
                     resultBox.empty();
-                    console.log("started ajax request");
                     for (var i = 0; i < data.length; i++) {
                         var movie = data[i];
                         var movieId = movie["id"].toString();

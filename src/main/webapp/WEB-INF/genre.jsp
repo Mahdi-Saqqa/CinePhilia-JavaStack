@@ -145,10 +145,17 @@
     </div>
     <div class="col col-sm-9 col-xl-11 px-sm-10 px-12 sticky-top ">
       <main class="row overflow-auto canvas">
-        <div class="row  mt-5 w-100 justify-content-evenly">
+        <h3 class="d-flex align-items-center ">${genre.name} <i class="fa-regular fa-chevron-right"></i></h3>
+        <div class="row w-100 justify-content-evenly">
           <c:forEach var="movie" items="${movies}">
-            <a href="/movie/${movie.id}" class="card   ratio-16x9  movie-card  m-3  "  style="width: 30vh;aspect-ratio: 16/9; background-image: url('https://www.themoviedb.org/t/p/w355_and_h200_bestv2${movie.poster}'); background-size: cover;" onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)"  >
-              <p class="text-center mt-4 h2  invisible" id="title" >${movie.title}</p>
+            <a href="/movie/${movie.id}" class="ratio-16x9 m-3
+                        <c:if test="${currentUser.dark}">
+                       bg-dark text-white
+                        </c:if>
+"  style="width: 30vh; background-size: cover; text-decoration: none;" onmouseover="cardHoverIn(this)" onmouseleave="cardHoverOut(this, 1)"  >
+              <img class="rounded img-fluid" src="https://www.themoviedb.org/t/p/w355_and_h200_bestv2${movie.poster}">
+              <p class="text- mt-2 h6" id="title" >${movie.title}</p>
+              <p class="text-muted" style="text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">${movie.overview}</p>
             </a>
           </c:forEach>
         </div>
@@ -159,6 +166,12 @@
     </div>
   </div>
 </div>
+<script>
+  function redirect(id){
+    window.location.href = "/movie/"+id;
+  }
+</script>
+
 <script src="/js/index.js" ></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js" ></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

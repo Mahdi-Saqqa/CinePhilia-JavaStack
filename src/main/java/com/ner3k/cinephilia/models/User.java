@@ -45,7 +45,7 @@ public class User {
     @Transient
     private String confirmPassword;
 
-    @NotNull
+    @NotNull(message = "BOD must not be null")
     @ValidAge(minimumAge = 12, message = "You must be at least 12 years old")
     private LocalDate dob;
 
@@ -78,7 +78,7 @@ public class User {
     @OneToMany( mappedBy = "user",fetch = FetchType.LAZY)
     List<Rate> rates;
 
-    boolean dark = false;
+    boolean dark = true;
     public List<Long> getRatedMoviesId(){
         List<Rate> rates = getRates();
         List<Long> movieIds = new ArrayList<>();

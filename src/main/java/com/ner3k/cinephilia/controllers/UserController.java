@@ -49,21 +49,7 @@ public class UserController {
 
         return "test.jsp";
     }
-    @RequestMapping("/login")
-    public String login(@RequestParam(value = "error", required = false) String error, @RequestParam(value = "logout", required = false) String logout, Model model,Principal principal) {
-        System.out.println(principal);
-        if (principal != null){
-            return "redirect:/home";
-        }
 
-        if (error != null) {
-            model.addAttribute("errorMessage", "Invalid Credentials, Please try again.");
-        }
-        if (logout != null) {
-            model.addAttribute("logoutMessage", "Logout Successful!");
-        }
-        return "signin.jsp";
-    }
 
 
     @PostMapping("/register")
